@@ -1,34 +1,5 @@
 #include "main.h"
 
-size_t ft_strLen(const char *str) {
-    size_t i;
-
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	size_t	i;
-	size_t	len;
-	char	*dst;
-
-	len = ft_strLen(s1);
-	dst = malloc (sizeof(char) * (len + 1));
-	if (!dst)
-		return (0);
-	i = 0;
-	while (i < len)
-	{
-		dst[i] = s1[i];
-		i++;
-	}
-	dst[i] = 0;
-	return (dst);
-}
-
 void ft_free(t_data *data)
 {
     int i;

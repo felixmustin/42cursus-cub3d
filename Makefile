@@ -40,10 +40,10 @@ FT_LNK	= -L ./libft -l ft
 
 RM = rm -f
 
+all:		$(FT_LIB) $(MLX_LIB) ${NAME}
+
 ${NAME}:	${OBJS}
 			$(CC) $(OBJS) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
-
-all:		$(FT_LIB) $(MLX_LIB) ${NAME}
 
 $(FT_LIB):
 	make -C $(FT)
