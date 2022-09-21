@@ -29,6 +29,6 @@ void ft_create_texture(t_data *data)
 void	ft_clear_window(t_data *data)
 {
     mlx_destroy_window(data->mlx.mlx_ptr, data->mlx.mlx_win);
-    mlx_destroy_image(data->mlx.mlx_ptr, data->mlx.mlx_img);
-    mlx_destroy_image(data->mlx.mlx_ptr, data->tex.tex);
+    //mlx_destroy_image(data->mlx.mlx_ptr, data->mlx.mlx_img);
+    //mlx_destroy_image(data->mlx.mlx_ptr, data->tex.tex);
 }

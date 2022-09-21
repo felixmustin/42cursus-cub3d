@@ -8,13 +8,16 @@
 #include <math.h>
 #include "gnl/get_next_line.h"
 #include "minilibx/mlx.h"
+#include "libft/libft.h"
 
+# define K_Z 13
+# define K_Q 0
+# define K_S 1
+# define K_D 2
 # define K_AR_L 123
 # define K_AR_R 124
 # define K_AR_U 125
 # define K_AR_D 126
-# define K_G 5
-# define K_H 4
 # define K_ESC 53
 
 enum {
@@ -100,6 +103,7 @@ typedef struct s_cam
     bool right;
     bool left;
     bool rotate;
+    int ptr_x;
     double rot_speed;
     double speed;
     bool display;
@@ -109,7 +113,7 @@ typedef struct s_sprite
 {
   double x;
   double y;
-  double heigth;
+  double walkable;
   int text;
 } t_sprite;
 
@@ -136,6 +140,10 @@ typedef struct s_data
 
     int x;
     int y;
+
+    int sizeminimap;
+    int minimap_x;
+    int minimap_y;
 
     t_sprite *sprite;
     int numSprite;
@@ -168,9 +176,10 @@ typedef struct s_data
     int leave;
 } t_data;
 
-//KEYS
+//EVENT
 int	ft_key_press(int keycode, t_data *data);
 int	ft_key_release(int keycode, t_data *data);
+int mouse_move(int x, int y, t_data *data);
 
 //RAYCAST
 void raycast_wall(t_data *data);
@@ -184,6 +193,7 @@ void ft_clear_window(t_data *data);
 
 //move
 void move(t_data *data, t_cam *cam);
+void rotate_cam(t_cam *cam);
 
 int leave(t_data *data);
 
@@ -191,5 +201,8 @@ char	*ft_strdup(const char *s1);
 
 void draw_sprites(t_data *data);
 void sortSprites(t_data *data);
+
+
+void	minimap(t_data *data);
 
 #endif

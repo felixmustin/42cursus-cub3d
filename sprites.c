@@ -46,12 +46,10 @@ void draw_sprite_calc(t_data *data, int i)
     //translate sprite position to relative to camera
     data->spriteX = data->sprite[data->spriteOrder[i]].x - data->cam.pos_x;
     data->spriteY = data->sprite[data->spriteOrder[i]].y - data->cam.pos_y;
-
     data->invDet = 1.0 / (data->cam.plane_x*data->cam.dir_y - data->cam.dir_x*data->cam.plane_y);
     data->transformX = data->invDet * (data->cam.dir_y*data->spriteX - data->cam.dir_x*data->spriteY);
     data->transformY = data->invDet * (-data->cam.plane_y*data->spriteX + data->cam.plane_x*data->spriteY);
     data->spriteScreenX = (int)((data->screen_width / 2) * (1 + data->transformX / data->transformY));
-
     data->spriteHeigth = abs((int)(data->screen_heigth / data->transformY));
     data->drawStartY = -data->spriteHeigth / 2 + data->screen_heigth / 2;
     if (data->drawStartY < 0)

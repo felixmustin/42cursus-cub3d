@@ -1,12 +1,13 @@
 NAME = cub3d
 
 SRC = main.c \
-	keys.c \
+	events.c \
 	raycast_wall.c \
 	raycast_floor_ceil.c \
 	move.c \
 	mlx_utils.c \
-	sprites.c
+	sprites.c \
+	decorations.c
 
 
 INCLUDES = main.h
@@ -21,10 +22,10 @@ CC = gcc $(CCFLAG)
 CCFLAG = -Wall -Wextra -Werror -fsanitize=address -g
 
 #UNCOMMENT THIS FOR MACOS
-MLX		= ./minilibx_macos
+MLX		= ./minilibx
 MLX_LIB	= $(addprefix $(MLX),mlx.a)
-MLX_INC	= -I ./minilibx_macos
-MLX_LNK	= -L ./minilibx_macos -l mlx -framework OpenGL -framework AppKit
+MLX_INC	= -I ./minilibx
+MLX_LNK	= -L ./minilibx -l mlx -framework OpenGL -framework AppKit
 
 #UNCOMMENT THIS FOR LINUX
 #MLX		= ./minilibx_linux/
@@ -32,21 +33,28 @@ MLX_LNK	= -L ./minilibx_macos -l mlx -framework OpenGL -framework AppKit
 #MLX_INC	= -I ./minilibx_linux
 #MLX_LNK	= -L ./minilibx_linux -l mlx -lbsd -lX11 -lXext
 
+FT		= ./libft/
+FT_LIB	= $(addprefix $(FT),libft.a)
+FT_INC	= -I ./libft
+FT_LNK	= -L ./libft -l ft
 
 RM = rm -f
 
 ${NAME}:	${OBJS}
-			$(CC) $(OBJS) $(MLX_LNK) -lm -o $(NAME)
+			$(CC) $(OBJS) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
 
-all:		$(MLX_LIB) ${NAME}
+all:		$(FT_LIB) $(MLX_LIB) ${NAME}
+
+$(FT_LIB):
+	make -C $(FT)
 
 $(MLX_LIB):
 	make -C $(MLX)
 
-
 clean:
 			${RM} ${OBJS}
-#make -C $(MLX) clean
+			make -C $(FT) fclean
+			make -C $(MLX) clean
 
 fclean:		clean
 			${RM} ${NAME}
