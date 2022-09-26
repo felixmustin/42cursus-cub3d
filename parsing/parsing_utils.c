@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "../main.h"
 
 void	free_tab(char **tab)
 {
@@ -32,14 +32,17 @@ int	malloc_texture(t_data *data)
 	int	i;
 
 	i = 0;
-    data->tex.textures = malloc(sizeof(char *) * 9);
+    data->tex.textures = malloc(sizeof(char *) * 5);
 	if (!data->tex.textures)
 		return (0);
-	while (i < 9)
-	{
-		data->tex.textures[i] = NULL;
-		i++;
-	}
+	data->tex.tex = malloc(sizeof(void *) * 5);
+	if (!data->tex.tex)
+		return (0);
+    data->tex.tex_tab = malloc(sizeof(char *) * 5);
+	if (!data->tex.tex_tab)
+		return (0);
+	data->tex.w = 64;
+	data->tex.h = 64;
 	return (1);
 }
 

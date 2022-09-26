@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "../main.h"
 
 char	*ft_strdup_modif(char *str, char c)
 {

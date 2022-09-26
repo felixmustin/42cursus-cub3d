@@ -7,7 +7,17 @@ SRC = main.c \
 	move.c \
 	mlx_utils.c \
 	sprites.c \
-	decorations.c
+	decorations.c \
+	parsing/color_recover.c \
+	parsing/file_recover.c \
+	parsing/map_recover.c \
+	parsing/texture_recover.c \
+	parsing/parse_map.c \
+	parsing/parse_texture.c \
+	parsing/parser.c \
+	parsing/parsing_utils.c \
+	parsing/parsing.c \
+	gnl/get_next_line.c \
 
 
 INCLUDES = main.h

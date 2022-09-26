@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "../main.h"
 
 int	check_ext(char *str)
 {
@@ -48,6 +48,30 @@ int	check_arg(int ac, char **av)
 	return (1);
 }
 
+void	init_data(t_data *data)
+{
+	data->ceiling_color = 0;
+	data->floor_color = 0;
+	data->cam.pos_x = 0;
+    data->cam.pos_y = 0;
+    data->cam.dir_x = 0;
+    data->cam.dir_y = 0;
+    data->cam.plane_x = 0;
+    data->cam.plane_y = 1;
+    data->cam.front = false;
+    data->cam.back = false;
+    data->cam.right = false;
+    data->cam.left = false;
+    data->cam.speed = 0.1;
+    data->leave = 0;
+	data->cam.display = true;
+    data->map_width = 0;
+    data->map_heigth = 0;
+    data->screen_width = 640;
+    data->screen_heigth = 480;
+    data->cam.ptr_x = data->screen_width/2;
+}
+
 int	parsing(int ac, char **av, t_data *data)
 {
 	int	i;
@@ -55,8 +79,7 @@ int	parsing(int ac, char **av, t_data *data)
 
 	i = 0;
 	file = NULL;
-	data->ceiling_color = 0;
-	data->floor_color = 0;
+	init_data(data);
 	if (!check_arg(ac, av))
 		return (0);
 	file = file_recover(av[1]);

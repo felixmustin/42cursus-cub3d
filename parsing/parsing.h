@@ -14,9 +14,6 @@ int		malloc_texture(t_data *data);
 char	**file_recover(char *str);
 int		parse_texture(t_data *data);
 int		parser(t_data *data)
-
-
-char	**ft_split(char const *s, char c);
-int		ft_atoi(const char *str);
+int		parse_map(t_data *data);
 
 #endif

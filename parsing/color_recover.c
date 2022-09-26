@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "../main.h"
 
 void	check_color(char **split_color, int *i)
 {
@@ -26,7 +26,7 @@ int	get_color(char	**str)
 	split_color = ft_split(str[1], ',');
 	if (!split_color)
 		return (0);
-	if (ft_strlen_split != 3)
+	if (ft_strlen_split(split_color) != 3)
 		return (0);
 	check_color(split_color, &i);
 	if (i == 3)

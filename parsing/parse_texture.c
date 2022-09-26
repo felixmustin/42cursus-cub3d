@@ -1,4 +1,4 @@
-#include "parsing.h"
+#include "../main.h"
 
 int	check_xpm(char *str)
 {
@@ -43,16 +43,11 @@ int	check_acces(t_data *data)
 	i = 0;
 	while (data->tex.textures[i] != NULL)
 	{
-		if (acces(data->tex.textures[i], F_OK) == -1 || acces(data->tex.textures[i], R_OK) == -1 )
+		if (access(data->tex.textures[i], F_OK) == -1 || access(data->tex.textures[i], R_OK) == -1 )
 			return (0);
 		i++;
 	}
 	return (1);
-}
-
-int	check_fd(t_data *data)
-{
-
 }
 
 int	parse_texture(t_data *data)
