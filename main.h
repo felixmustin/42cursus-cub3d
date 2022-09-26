@@ -131,6 +131,9 @@ typedef struct s_data
     t_mlx mlx;
     t_tex tex;
 
+	int	floor_color;
+	int	ceiling_color;
+	
     char **map;
     int map_width;
     int map_heigth;
