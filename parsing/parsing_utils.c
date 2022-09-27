@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../mandatory/main.h"
 
 void	free_tab(char **tab)
 {
@@ -35,6 +35,10 @@ int	malloc_texture(t_data *data)
     data->tex.textures = malloc(sizeof(char *) * 5);
 	if (!data->tex.textures)
 		return (0);
+	while(i < 5) {
+		data->tex.textures[i] = NULL;
+		i++;
+	}
 	data->tex.tex = malloc(sizeof(void *) * 5);
 	if (!data->tex.tex)
 		return (0);

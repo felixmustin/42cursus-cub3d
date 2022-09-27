@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../mandatory/main.h"
 
 int	check_border2(char **map, int y, int i)
 {
@@ -50,27 +50,35 @@ int	check_border(char **map, int *width, int *height)
 
 void	position_player(t_data *data, int x, int y, char c)
 {
-	data->cam.pos_x = x;
-	data->cam.pos_y = y;
+	data->cam.pos_x = (double)x;
+	data->cam.pos_y = (double)y;
 	if (c == 'N')
 	{
 		data->cam.dir_x = 0;
-		data->cam.dir_y = 1;
+		data->cam.dir_y = -1;
+		data->cam.plane_x = 1;
+		data->cam.plane_y = 0;
 	}
 	if (c == 'S')
 	{
 		data->cam.dir_x = 0;
-		data->cam.dir_y = -1;
+		data->cam.dir_y = 1;
+		data->cam.plane_x = -1;
+		data->cam.plane_y = 0;
 	}
 	if (c == 'W')
 	{
 		data->cam.dir_x = -1;
 		data->cam.dir_y = 0;
+		data->cam.plane_x = 0;
+		data->cam.plane_y = -1;
 	}
 	if (c == 'E')
 	{
 		data->cam.dir_x = 1;
 		data->cam.dir_y = 0;
+		data->cam.plane_x = 0;
+		data->cam.plane_y = 1;
 	}
 }
 

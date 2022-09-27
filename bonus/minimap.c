@@ -22,8 +22,7 @@ int		drawsquare(t_data *data)
 		while (v < data->sizeminimap)
 		{
 			if (data->mlx.color != 0)
-				my_mlx_pixel_put(data, data->minimap_x + v,
-				data->minimap_y + i, data->mlx.color);
+				my_mlx_pixel_put(data, data->minimap_x + v, data->minimap_y + i, data->mlx.color);
 			v++;
 		}
 		v = 0;
@@ -40,7 +39,6 @@ void	checkbox(t_data *data, char c, int map_x, int map_y)
 		data->mlx.color = 16777215;
 	if (c == '1')
 		data->mlx.color = 1;
-	
 	if ((int)data->cam.pos_x == map_x && (int)data->cam.pos_y == map_y)
 		data->mlx.color = 13910590;
 	drawsquare(data);
@@ -48,24 +46,24 @@ void	checkbox(t_data *data, char c, int map_x, int map_y)
 
 void	minimap(t_data *data)
 {
-	int map_x;
-	int map_y;
+	int x;
+	int y;
 
     size_minimap(data);
-	map_x = 0;
-	map_y = 0;
+	x = 0;
+	y = 0;
 	data->minimap_x = 0;
 	data->minimap_y = 0;
-	while (map_y < data->map_heigth)
+	while (y < data->map_heigth)
 	{
-		while (map_x <= data->map_width)
+		while (x <= data->map_width)
 		{
-			checkbox(data, data->map[map_y][map_x], map_x, map_y);
-			map_x++;
+			checkbox(data, data->map[y][x], x, y);
+			x++;
 		}
-		map_y++;
-		map_x = 0;
-		data->minimap_y = data->sizeminimap * map_y;
+		y++;
+		x = 0;
+		data->minimap_y = data->sizeminimap * y;
 		data->minimap_x = 0;
 	}
 }

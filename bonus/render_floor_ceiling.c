@@ -37,7 +37,7 @@ void ray_calc_tex2(t_data *data)
     data->tex.floor_tex_y = (int)(data->tex.pix_pos_y * data->tex.h) % data->tex.h;
 }
 
-void raycast_floor_ceil(t_data *data)
+void raycast_floor_ceiling(t_data *data)
 {
     ray_texel_pos(data);
 

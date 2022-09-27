@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../mandatory/main.h"
 
 int	check_xpm(char *str)
 {

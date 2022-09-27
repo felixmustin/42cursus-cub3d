@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../mandatory/main.h"
 
 int	map_size(char **file, int i)
 {
@@ -21,7 +21,7 @@ int	malloc_map(t_data *data, int i, char **file)
 	size = map_size(file, i);
 	if (size == 0)
 		return (0);
-	data->map = malloc(sizeof(char *) * size + 1);
+	data->map = malloc(sizeof(char *) * (size + 1));
 	if (!data->map)
 		return (0);
 	return (1);

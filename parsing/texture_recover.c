@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../mandatory/main.h"
 
 char	*ft_strdup_modif(char *str, char c)
 {
@@ -6,7 +6,7 @@ char	*ft_strdup_modif(char *str, char c)
 	int		i;
 
 	i = 0;
-	dst = malloc(sizeof(char) * ft_strlen(str) + 1);
+	dst = malloc(sizeof(char) * (ft_strlen(str) + 1));
 	if (!dst)
 		return (0);
 	while (str[i] != '\0' && str[i] != c)

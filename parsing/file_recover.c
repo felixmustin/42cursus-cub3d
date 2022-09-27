@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "../mandatory/main.h"
 
 int	file_size(int fd)
 {
@@ -50,7 +50,7 @@ char	**read_file(int fd, int size)
 	char	**file;
 
 	i = 0;
-	file = malloc(sizeof(char *) * size + 1);
+	file = malloc(sizeof(char *) * (size + 1));
 	if (!file)
 		return (NULL);
 	while (i < size)

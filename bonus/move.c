@@ -4,10 +4,10 @@ int check_move(t_data *data, int y, int x)
 {
     int i;
     i = 0;
-    while (i < data->numSprite)
+    while (i < data->sprite.numSprite)
     {
-        if (x == (int)data->sprite[i].x && y == (int)data->sprite[i].y)
-            if (!data->sprite[i].walkable)
+        if (x == (int)data->sprite_info[i].x && y == (int)data->sprite_info[i].y)
+            if (!data->sprite_info[i].walkable)
                 return (0);
         i++;
     }

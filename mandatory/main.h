@@ -6,19 +6,21 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
-#include "gnl/get_next_line.h"
-#include "minilibx/mlx.h"
-#include "libft/libft.h"
+#include "../gnl/get_next_line.h"
+#include "../minilibx/mlx.h"
+#include "../libft/libft.h"
 
 # define K_Z 13
 # define K_Q 0
 # define K_S 1
 # define K_D 2
+# define K_P 35
 # define K_AR_L 123
 # define K_AR_R 124
 # define K_AR_U 125
 # define K_AR_D 126
 # define K_ESC 53
+# define K_SHFT 257
 
 enum {
 	ON_KEYDOWN = 2,
@@ -103,7 +105,6 @@ typedef struct s_cam
     bool right;
     bool left;
     bool rotate;
-    int ptr_x;
     double rot_speed;
     double speed;
     bool display;
@@ -111,48 +112,12 @@ typedef struct s_cam
 
 typedef struct s_sprite
 {
-  double x;
-  double y;
-  double walkable;
-  int text;
-} t_sprite;
-
-typedef struct s_sprite_sort
-{
-    double dist;
-    int ord;
-} t_sprite_sort;
-
-
-typedef struct s_data
-{
-    t_cam cam;
-    t_ray ray;
-    t_mlx mlx;
-    t_tex tex;
-
-	int	floor_color;
-	int	ceiling_color;
-	
-    char **map;
-    int map_width;
-    int map_heigth;
-
-    int screen_width;
-    int screen_heigth;
-
-    int x;
-    int y;
-
-    int sizeminimap;
-    int minimap_x;
-    int minimap_y;
-
-    t_sprite *sprite;
     int numSprite;
     double *ZBuffer;
+
     int *spriteOrder;
     double *spriteDistance;
+
     double spriteX;
     double spriteY;
     double invDet;
@@ -161,21 +126,66 @@ typedef struct s_data
     int spriteScreenX;
     int spriteHeigth;
     int spriteWidth;
+
     int drawStartY;
     int drawEndY;
     int drawStartX;
     int drawEndX;
+
     int stripe;
     int stripe_y;
     int texX;
     int texY;
     int d;
 
+} t_sprite;
+
+typedef struct s_sprite_info
+{
+  double x;
+  double y;
+  double walkable;
+  int text;
+} t_sprite_info;
+
+typedef struct s_sprite_sort
+{
+    double dist;
+    int ord;
+} t_sprite_sort;
+
+typedef struct s_data
+{
+    t_cam cam;
+    t_ray ray;
+    t_mlx mlx;
+    t_tex tex;
+    t_sprite sprite;
+    t_sprite_info *sprite_info;
+
+    char **map;
+    int map_width;
+    int map_heigth;
+
+    int screen_width;
+    int screen_heigth;
+
+    int	floor_color;
+	int	ceiling_color;
+
+    int x;
+    int y;
+
+    int sizeminimap;
+    int minimap_x;
+    int minimap_y;
+
     //traced line
     int line_height;
     int draw_start;
     int draw_end;
 
+    bool menu;
     int leave;
 } t_data;
 
@@ -186,7 +196,8 @@ int mouse_move(int x, int y, t_data *data);
 
 //RAYCAST
 void raycast_wall(t_data *data);
-void raycast_floor_ceil(t_data *data);
+void raycast_floor_ceiling(t_data *data);
+void color_floor_ceiling(t_data *data);
 
 //mlx
 void my_mlx_pixel_put(t_data *data, int xx, int yy, int color);
@@ -199,14 +210,15 @@ void move(t_data *data, t_cam *cam);
 void rotate_cam(t_cam *cam);
 
 int leave(t_data *data);
+void display_menu(t_data *data);
 
-char	*ft_strdup(const char *s1);
-
+//SPRITE
 void draw_sprites(t_data *data);
 void sortSprites(t_data *data);
 
-
 void	minimap(t_data *data);
+
+void init_cursor(t_data *data);
 
 //parsing
 
