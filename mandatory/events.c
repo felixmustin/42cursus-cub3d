@@ -1,18 +1,5 @@
 #include "main.h"
 
-int mouse_move(int x, int y, t_data *data)
-{
-	if (data->menu == false)
-	{
-		(void) y;
-		data->cam.rot_speed = ((x * 0.15)  - ((data->screen_width / 2) * 0.15)) * 0.06;
-		rotate_cam(&data->cam);
-		if (x != data->screen_width / 2)
-			mlx_mouse_move(data->mlx.mlx_win, data->screen_width/2, data->screen_heigth/2);
-	}
-    return (1);
-}
-
 void	ft_key_press_2(int keycode, t_data *data)
 {
 	if (keycode == K_AR_L)
@@ -31,9 +18,7 @@ void	ft_key_press_2(int keycode, t_data *data)
 
 int	ft_key_press(int keycode, t_data *data)
 {
-	if (keycode == K_P)
-		display_menu(data);
-	else if (keycode == K_ESC)
+	if (keycode == K_ESC)
         data->leave = 1;
 	if (data->menu == false) 
 	{

@@ -84,7 +84,7 @@ void draw_sprite_do(t_data *d, int i)
             {
                 d->sprite.d = (d->sprite.stripe_y) * 256 - d->screen_heigth * 128 + d->sprite.spriteHeigth * 128; //256 and 128 factors to avoid floats
                 d->sprite.texY = ((d->sprite.d * d->tex.h) / d->sprite.spriteHeigth) / 256;                        
-                d->mlx.color = ((unsigned int*)d->tex.tex_tab[d->sprite_info[d->sprite.spriteOrder[i]].text])[(d->tex.w * d->sprite.texY + d->sprite.texX)];
+                d->mlx.color = ((unsigned int*)d->sprite.spr_tab[d->sprite_info[d->sprite.spriteOrder[i]].text])[(d->tex.w * d->sprite.texY + d->sprite.texX)];
                 if((d->mlx.color & 0x00FFFFFF) != 0) //paint pixel if it isn't black, black is the invisible color
                     my_mlx_pixel_put(d, d->sprite.stripe, d->sprite.stripe_y, d->mlx.color);
                 d->sprite.stripe_y++;

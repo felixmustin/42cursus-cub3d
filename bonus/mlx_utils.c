@@ -17,11 +17,21 @@ void	ft_create_image(t_data *data)
 
 void ft_create_texture(t_data *data) 
 {
-    int i = 0;
+    int i;
 
-    while (i < 9) {
+    i = 0;
+
+    while (i < 4) {
         data->tex.tex[i] = mlx_xpm_file_to_image(data->mlx.mlx_ptr, data->tex.textures[i], &data->tex.w, &data->tex.h);
         data->tex.tex_tab[i] = mlx_get_data_addr(data->tex.tex[i], &data->mlx.bits_per_pixel, &data->mlx.line_length, &data->mlx.endian);
+        i++;
+    }
+    i = 0;
+    
+    while (i < (2 + data->sprite.numSprite))
+    {
+        data->sprite.spr[i] = mlx_xpm_file_to_image(data->mlx.mlx_ptr, data->sprite.Sprites[i], &data->tex.w, &data->tex.h);
+        data->sprite.spr_tab[i] = mlx_get_data_addr(data->sprite.spr[i], &data->mlx.bits_per_pixel, &data->mlx.line_length, &data->mlx.endian);
         i++;
     }
 }

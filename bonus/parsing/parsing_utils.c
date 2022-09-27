@@ -1,4 +1,4 @@
-#include "../mandatory/main.h"
+#include "../main.h"
 
 void	free_tab(char **tab)
 {

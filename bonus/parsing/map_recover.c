@@ -1,4 +1,4 @@
-#include "../mandatory/main.h"
+#include "../main.h"
 
 int	map_size(char **file, int i)
 {

@@ -16,16 +16,28 @@ int check_move(t_data *data, int y, int x)
 
 void rotate_cam(t_cam *cam)
 {
-    double old_dir_x;
-    double old_plane_x;
+    double old_dir_y;
+    double old_plane_y;
 
-    old_dir_x = cam->dir_x;
-    cam->dir_x = cam->dir_x*cos(-cam->rot_speed) - cam->dir_y*sin(-cam->rot_speed);
-    cam->dir_y = old_dir_x*sin(-cam->rot_speed) + cam->dir_y*cos(-cam->rot_speed);
-    old_plane_x = cam->plane_x;
-    cam->plane_x = cam->plane_x * cos(-cam->rot_speed) - cam->plane_y*sin(-cam->rot_speed);
-    cam->plane_y = old_plane_x*sin(-cam->rot_speed) + cam->plane_y*cos(-cam->rot_speed);
+    old_dir_y = cam->dir_y;
+    cam->dir_y = cam->dir_y*cos(-cam->rot_speed) - cam->dir_x*sin(-cam->rot_speed);
+    cam->dir_x = old_dir_y*sin(-cam->rot_speed) + cam->dir_x*cos(-cam->rot_speed);
+    old_plane_y = cam->plane_y;
+    cam->plane_y = cam->plane_y * cos(-cam->rot_speed) - cam->plane_x*sin(-cam->rot_speed);
+    cam->plane_x = old_plane_y*sin(-cam->rot_speed) + cam->plane_x*cos(-cam->rot_speed);
 }
+// void rotate_cam(t_cam *cam)
+// {
+//     double old_dir_x;
+//     double old_plane_x;
+
+//     old_dir_x = cam->dir_x;
+//     cam->dir_x = cam->dir_x*cos(-cam->rot_speed) - cam->dir_y*sin(-cam->rot_speed);
+//     cam->dir_y = old_dir_x*sin(-cam->rot_speed) + cam->dir_y*cos(-cam->rot_speed);
+//     old_plane_x = cam->plane_x;
+//     cam->plane_x = cam->plane_x * cos(-cam->rot_speed) - cam->plane_y*sin(-cam->rot_speed);
+//     cam->plane_y = old_plane_x*sin(-cam->rot_speed) + cam->plane_y*cos(-cam->rot_speed);
+// }
 
 void move_2(t_data *data, t_cam *cam)
 {

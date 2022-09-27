@@ -8,18 +8,16 @@ SRC = mandatory/main.c \
 	mandatory/render_floor_ceiling.c \
 	mandatory/move.c \
 	mandatory/mlx_utils.c \
-	mandatory/sprites.c \
-	mandatory/minimap.c \
 	mandatory/cursor.c \
-	parsing/color_recover.c \
-	parsing/file_recover.c \
-	parsing/map_recover.c \
-	parsing/texture_recover.c \
-	parsing/parse_map.c \
-	parsing/parse_texture.c \
-	parsing/parser.c \
-	parsing/parsing_utils.c \
-	parsing/parsing.c \
+	mandatory/parsing/color_recover.c \
+	mandatory/parsing/file_recover.c \
+	mandatory/parsing/map_recover.c \
+	mandatory/parsing/texture_recover.c \
+	mandatory/parsing/parse_map.c \
+	mandatory/parsing/parse_texture.c \
+	mandatory/parsing/parser.c \
+	mandatory/parsing/parsing_utils.c \
+	mandatory/parsing/parsing.c \
 	gnl/get_next_line.c \
 
 SRC_BONUS = bonus/main.c \
@@ -31,6 +29,16 @@ SRC_BONUS = bonus/main.c \
 		bonus/sprites.c \
 		bonus/minimap.c \
 		bonus/cursor.c \
+		bonus/parsing/color_recover.c \
+		bonus/parsing/file_recover.c \
+		bonus/parsing/map_recover.c \
+		bonus/parsing/texture_recover.c \
+		bonus/parsing/parse_map.c \
+		bonus/parsing/parse_texture.c \
+		bonus/parsing/parser.c \
+		bonus/parsing/parsing_utils.c \
+		bonus/parsing/parsing.c \
+		gnl/get_next_line.c \
 
 INCLUDES = mandatory/main.h
 

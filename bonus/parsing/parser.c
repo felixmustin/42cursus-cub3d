@@ -1,4 +1,4 @@
-#include "../mandatory/main.h"
+#include "../main.h"
 
 int	parser(t_data *data)
 {

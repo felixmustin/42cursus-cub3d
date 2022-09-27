@@ -1,4 +1,4 @@
-#include "../mandatory/main.h"
+#include "../main.h"
 
 int	check_border2(char **map, int y, int i)
 {

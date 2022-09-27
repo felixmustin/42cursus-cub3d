@@ -102,13 +102,13 @@ void raycast_wall(t_data *data)
     while(data->y < data->draw_end) {
         data->tex.tex_y = (int)((data->y * 2 - data->screen_heigth + data->line_height) * (data->tex.h /2)/data->line_height);
         if (data->ray.side == 0 && data->ray.rayDir_x > 0) 
-            data->mlx.color = ((unsigned int*)data->tex.tex_tab[2])[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
+            data->mlx.color = ((unsigned int*)data->tex.tex_tab[0])[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
         else if (data->ray.side == 0 && data->ray.rayDir_x < 0)
-            data->mlx.color = ((unsigned int*)data->tex.tex_tab[3])[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
+            data->mlx.color = ((unsigned int*)data->tex.tex_tab[1])[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
         else if (data->ray.side == 1 && data->ray.rayDir_y > 0)
-            data->mlx.color = ((unsigned int*)data->tex.tex_tab[4])[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
+            data->mlx.color = ((unsigned int*)data->tex.tex_tab[2])[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
         else if (data->ray.side == 1 && data->ray.rayDir_y < 0)
-            data->mlx.color = ((unsigned int*)data->tex.tex_tab[5])[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
+            data->mlx.color = ((unsigned int*)data->tex.tex_tab[3])[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
         //if (data->ray.side == 1)
         //    data->mlx.color = (data->mlx.color >>1) & 8355711;
         my_mlx_pixel_put(data, data->x, data->y, data->mlx.color);

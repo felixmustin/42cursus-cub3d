@@ -1,4 +1,4 @@
-#include "../mandatory/main.h"
+#include "../main.h"
 
 void	check_color(char **split_color, int *i)
 {
