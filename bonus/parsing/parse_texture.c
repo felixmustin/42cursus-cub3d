@@ -39,11 +39,13 @@ int	check_extension(t_data *data)
 int	check_acces(t_data *data)
 {
 	int	i;
+	int	fd;
 
 	i = 0;
 	while (data->tex.textures[i] != NULL)
 	{
-		if (access(data->tex.textures[i], F_OK) == -1 || access(data->tex.textures[i], R_OK) == -1 )
+		fd = open(data->tex.textures[i], O_RDONLY);
+		if (fd <= 0)
 			return (0);
 		i++;
 	}
@@ -53,8 +55,14 @@ int	check_acces(t_data *data)
 int	parse_texture(t_data *data)
 {
 	if (!check_extension(data))
+	{
+		write(1, "error : texture are not .xpm\n", 29);
 		return (0);
+	}
 	if (!check_acces(data))
+	{
+		write(1, "error : texture files are not valid\n", 36);
 		return (0);
+	}
 	return (1);
 }

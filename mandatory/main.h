@@ -178,5 +178,9 @@ char	**file_recover(char *str);
 int		parse_texture(t_data *data);
 int		parser(t_data *data);
 int		parse_map(t_data *data);
+int		get_color(char	**str);
+void	get_size(char **map, int *width, int *height);
+int		check_map(char **map);
+char	**file_to_texture(char *file);
 
 #endif

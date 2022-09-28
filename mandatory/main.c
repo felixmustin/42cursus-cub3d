@@ -66,7 +66,7 @@ int main(int argc, char **argv)
 {
     t_data data;
 
-    parsing(argc, argv, &data);
-    
+    if (!parsing(argc, argv, &data))
+		return (0);
     prepare(&data);
 }

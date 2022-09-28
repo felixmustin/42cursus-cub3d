@@ -5,11 +5,11 @@ int	file_size(int fd)
 	int		size;
 	int		r;
 	int		i;
-	char	buffer[500];
+	char	buffer[5000000];
 
 	size = 1;
 	i = 0;
-	r = read(fd, buffer, 500);
+	r = read(fd, buffer, 5000000);
 	if (r <= 0)
 	{
 		write(1, "The file is empty\n", 18);

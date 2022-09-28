@@ -18,6 +18,10 @@ SRC = mandatory/main.c \
 	mandatory/parsing/parser.c \
 	mandatory/parsing/parsing_utils.c \
 	mandatory/parsing/parsing.c \
+	mandatory/parsing/color_utils.c \
+	mandatory/parsing/size_map.c \
+	mandatory/parsing/check_map.c \
+	mandatory/parsing/texture_utils.c \
 	gnl/get_next_line.c \
 
 SRC_BONUS = bonus/main.c \
@@ -38,6 +42,10 @@ SRC_BONUS = bonus/main.c \
 		bonus/parsing/parser.c \
 		bonus/parsing/parsing_utils.c \
 		bonus/parsing/parsing.c \
+		bonus/parsing/color_utils.c \
+		bonus/parsing/size_map.c \
+		bonus/parsing/check_map.c \
+		bonus/parsing/texture_utils.c \
 		gnl/get_next_line.c \
 
 INCLUDES = mandatory/main.h

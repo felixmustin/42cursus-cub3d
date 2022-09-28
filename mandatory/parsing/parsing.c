@@ -53,27 +53,27 @@ void	init_data(t_data *data)
 	data->ceiling_color = 0;
 	data->floor_color = 0;
 	data->cam.pos_x = 0;
-    data->cam.pos_y = 0;
-    data->cam.dir_x = 0;
-    data->cam.dir_y = 0;
-    data->cam.plane_x = 0;
-    data->cam.plane_y = 0;
-    data->cam.front = false;
-    data->cam.back = false;
-    data->cam.right = false;
-    data->cam.left = false;
-    data->cam.speed = 0.05;
-    data->leave = 0;
+	data->cam.pos_y = 0;
+	data->cam.dir_x = 0;
+	data->cam.dir_y = 0;
+	data->cam.plane_x = 0;
+	data->cam.plane_y = 0;
+	data->cam.front = false;
+	data->cam.back = false;
+	data->cam.right = false;
+	data->cam.left = false;
+	data->cam.speed = 0.05;
+	data->leave = 0;
 	data->cam.display = true;
-    data->map_width = 0;
-    data->map_heigth = 0;
-    data->screen_width = 640;
-    data->screen_heigth = 480;
+	data->map_width = 0;
+	data->map_heigth = 0;
+	data->screen_width = 640;
+	data->screen_heigth = 480;
 }
 
 int	parsing(int ac, char **av, t_data *data)
 {
-	int	i;
+	int		i;
 	char	**file;
 
 	i = 0;
@@ -84,9 +84,11 @@ int	parsing(int ac, char **av, t_data *data)
 	file = file_recover(av[1]);
 	if (!file)
 		return (0);
-	if ((i = texture_recover(file, data, i)) == 0)
+	i = texture_recover(file, data, i);
+	if (i == 0)
 		return (0);
-	if ((i = color_recover(i, file, data)) == 0)
+	i = color_recover(i, file, data);
+	if (i == 0)
 		return (0);
 	if (!map_recover(data, file, i))
 		return (0);
