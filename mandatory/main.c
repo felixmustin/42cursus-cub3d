@@ -5,18 +5,21 @@ void ft_free(t_data *data)
     int i;
 
     i = 0;
-    while (i < 24) {
-        //free(data->map[i]);
+    while (i < data->map_heigth) {
+        free(data->map[i]);
         i++;
     }
     free(data->map);
-    /*free(data->tex.tex);
+    i = 0;
+    while (i < 5) {
+        free(data->tex.tex[i]);
+        free(data->tex.tex_tab[i]);
+        free(data->tex.textures[i]);
+        i++;
+    }
+    free(data->tex.tex);
     free(data->tex.tex_tab);
     free(data->tex.textures);
-    free(data->sprite);
-    free(data->spriteDistance);
-    free(data->spriteOrder);
-    free(data->ZBuffer);*/
 }
 
 int leave(t_data *data)
@@ -29,7 +32,7 @@ int leave(t_data *data)
 int render(t_data *data)
 {
     //if (data->cam.front || data->cam.back || data->cam.right || data->cam.left || data->cam.rotate || data->cam.display )
-        data->cam.display = false;
+
         data->x = 0;
         data->y = 0;
         move(data, &data->cam);
@@ -39,10 +42,9 @@ int render(t_data *data)
             color_floor_ceiling(data);
             data->x++;
         }
-        init_cursor(data);
     if (data->leave)
         leave(data);
-    else if (!data->menu)
+    else
         mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.mlx_win, data->mlx.mlx_img, 0, 0);
     return(1);
 }

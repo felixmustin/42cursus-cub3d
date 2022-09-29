@@ -8,7 +8,6 @@ SRC = mandatory/main.c \
 	mandatory/render_floor_ceiling.c \
 	mandatory/move.c \
 	mandatory/mlx_utils.c \
-	mandatory/cursor.c \
 	mandatory/parsing/color_recover.c \
 	mandatory/parsing/file_recover.c \
 	mandatory/parsing/map_recover.c \
@@ -30,9 +29,9 @@ SRC_BONUS = bonus/main.c \
 		bonus/render_floor_ceiling.c \
 		bonus/move.c \
 		bonus/mlx_utils.c \
-		bonus/sprites.c \
 		bonus/minimap.c \
 		bonus/cursor.c \
+		bonus/bonus.c \
 		bonus/parsing/color_recover.c \
 		bonus/parsing/file_recover.c \
 		bonus/parsing/map_recover.c \
@@ -58,7 +57,7 @@ OBJS_BONUS = ${SRC_BONUS:.c=.o}
 
 CC = gcc $(CCFLAG)
 
-CCFLAG = -Wall -Wextra -Werror -fsanitize=address -g
+CCFLAG = -Wall -Wextra -Werror #-fsanitize=address -g
 
 MLX		= ./minilibx
 MLX_LIB	= $(addprefix $(MLX),mlx.a)

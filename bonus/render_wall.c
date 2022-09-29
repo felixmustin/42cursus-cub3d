@@ -2,7 +2,6 @@
 
 void ray_init(t_data *data)
 {
-    //init value
     data->ray.cam_x = (2*(double)data->x/(double)data->screen_width) - 1;
     data->ray.rayPos_x = data->cam.pos_x;
     data->ray.rayPos_y = data->cam.pos_y;
@@ -51,7 +50,7 @@ void ray_DDA(t_data *data)
             data->ray.map_y += data->ray.step_y;
             data->ray.side = 1;
         }
-        if (data->map[(int)data->ray.map_y][(int)data->ray.map_x] > 48)
+        if (data->map[(int)data->ray.map_y][(int)data->ray.map_x] == 49)
             data->ray.hit = 1;
     }
     //distance perpandicular to camera plane
@@ -109,8 +108,6 @@ void raycast_wall(t_data *data)
             data->mlx.color = ((unsigned int*)data->tex.tex_tab[2])[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
         else if (data->ray.side == 1 && data->ray.rayDir_y < 0)
             data->mlx.color = ((unsigned int*)data->tex.tex_tab[3])[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
-        //if (data->ray.side == 1)
-        //    data->mlx.color = (data->mlx.color >>1) & 8355711;
         my_mlx_pixel_put(data, data->x, data->y, data->mlx.color);
         data->y++;
     }

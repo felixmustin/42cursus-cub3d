@@ -47,9 +47,9 @@ void raycast_floor_ceiling(t_data *data)
     while(data->y < data->screen_heigth)
     {
         ray_calc_tex2(data);
-        data->mlx.color = ((unsigned int*)data->sprite.spr_tab[1])[(data->tex.w * data->tex.floor_tex_y + data->tex.floor_tex_x)];
+        data->mlx.color = ((unsigned int*)data->spr_tab[1])[(data->tex.w * data->tex.floor_tex_y + data->tex.floor_tex_x)];
         my_mlx_pixel_put(data, data->x, data->y, data->mlx.color);
-        data->mlx.color = ((unsigned int*)data->sprite.spr_tab[0])[(data->tex.w * data->tex.floor_tex_y + data->tex.floor_tex_x)];
+        data->mlx.color = ((unsigned int*)data->spr_tab[0])[(data->tex.w * data->tex.floor_tex_y + data->tex.floor_tex_x)];
         my_mlx_pixel_put(data, data->x, data->screen_heigth-data->y-1, data->mlx.color);
         data->y++;
     }

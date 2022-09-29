@@ -34,6 +34,7 @@ int	stock_color(char *file, t_data *data)
 		if (data->ceiling_color == -1)
 			return (0);
 	}
+	free_tab(str);
 	return (1);
 }
 

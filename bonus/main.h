@@ -105,58 +105,10 @@ typedef struct s_cam
     bool right;
     bool left;
     bool rotate;
+    bool display;
     double rot_speed;
     double speed;
-    bool display;
 } t_cam;
-
-typedef struct s_sprite
-{
-    void **spr;
-    char **spr_tab;
-    char **Sprites;
-
-    int numSprite;
-    double *ZBuffer;
-
-    int *spriteOrder;
-    double *spriteDistance;
-
-    double spriteX;
-    double spriteY;
-    double invDet;
-    double transformX;
-    double transformY;
-    int spriteScreenX;
-    int spriteHeigth;
-    int spriteWidth;
-
-    int drawStartY;
-    int drawEndY;
-    int drawStartX;
-    int drawEndX;
-
-    int stripe;
-    int stripe_y;
-    int texX;
-    int texY;
-    int d;
-
-} t_sprite;
-
-typedef struct s_sprite_info
-{
-  double x;
-  double y;
-  double walkable;
-  int text;
-} t_sprite_info;
-
-typedef struct s_sprite_sort
-{
-    double dist;
-    int ord;
-} t_sprite_sort;
 
 typedef struct s_data
 {
@@ -164,12 +116,14 @@ typedef struct s_data
     t_ray ray;
     t_mlx mlx;
     t_tex tex;
-    t_sprite sprite;
-    t_sprite_info *sprite_info;
 
     char **map;
     int map_width;
     int map_heigth;
+
+    void **spr;
+    char **spr_tab;
+    char **SPR;
 
     int	floor_color;
 	int	ceiling_color;
@@ -216,13 +170,10 @@ void rotate_cam(t_cam *cam);
 int leave(t_data *data);
 void display_menu(t_data *data);
 
-//SPRITE
-void draw_sprites(t_data *data);
-void sortSprites(t_data *data);
-
 void	minimap(t_data *data);
-
 void init_cursor(t_data *data);
+void init_bonus(t_data *data);
+void replace_mouse(t_data *data);
 
 //parsing
 
@@ -243,6 +194,6 @@ int		get_color(char	**str);
 void	get_size(char **map, int *width, int *height);
 int		check_map(char **map);
 char	**file_to_texture(char *file);
-
+void	free_tab(char **tab);
 
 #endif

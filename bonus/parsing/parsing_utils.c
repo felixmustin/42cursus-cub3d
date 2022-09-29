@@ -12,6 +12,7 @@ void	free_tab(char **tab)
 			free(tab[i]);
 			i++;
 		}
+		free(tab);
 	}
 }
 

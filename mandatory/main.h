@@ -105,7 +105,6 @@ typedef struct s_cam
     bool rotate;
     double rot_speed;
     double speed;
-    bool display;
 } t_cam;
 
 typedef struct s_data
@@ -158,11 +157,6 @@ void rotate_cam(t_cam *cam);
 
 int leave(t_data *data);
 
-
-
-
-void init_cursor(t_data *data);
-
 //parsing
 
 int		parsing(int ac, char **av, t_data *data);
@@ -182,5 +176,6 @@ int		get_color(char	**str);
 void	get_size(char **map, int *width, int *height);
 int		check_map(char **map);
 char	**file_to_texture(char *file);
+void	free_tab(char **tab);
 
 #endif

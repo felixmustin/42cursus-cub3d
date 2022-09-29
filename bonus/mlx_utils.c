@@ -28,10 +28,10 @@ void ft_create_texture(t_data *data)
     }
     i = 0;
     
-    while (i < (2 + data->sprite.numSprite))
+    while (i < 2)
     {
-        data->sprite.spr[i] = mlx_xpm_file_to_image(data->mlx.mlx_ptr, data->sprite.Sprites[i], &data->tex.w, &data->tex.h);
-        data->sprite.spr_tab[i] = mlx_get_data_addr(data->sprite.spr[i], &data->mlx.bits_per_pixel, &data->mlx.line_length, &data->mlx.endian);
+        data->spr[i] = mlx_xpm_file_to_image(data->mlx.mlx_ptr, data->SPR[i], &data->tex.w, &data->tex.h);
+        data->spr_tab[i] = mlx_get_data_addr(data->spr[i], &data->mlx.bits_per_pixel, &data->mlx.line_length, &data->mlx.endian);
         i++;
     }
 }

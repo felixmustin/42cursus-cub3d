@@ -64,7 +64,6 @@ void	init_data(t_data *data)
 	data->cam.left = false;
 	data->cam.speed = 0.05;
 	data->leave = 0;
-	data->cam.display = true;
 	data->map_width = 0;
 	data->map_heigth = 0;
 	data->screen_width = 640;
@@ -94,5 +93,6 @@ int	parsing(int ac, char **av, t_data *data)
 		return (0);
 	if (!parser(data))
 		return (0);
+	free_tab(file);
 	return (1);
 }

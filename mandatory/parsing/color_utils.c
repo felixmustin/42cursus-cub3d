@@ -34,5 +34,6 @@ int	get_color(char	**str)
 		color = (pow(256, 2) * ft_atoi(split_color[0])) + \
 			(256 * ft_atoi(split_color[1])) + ft_atoi(split_color[2]);
 	}
+	free_tab(split_color);
 	return (color);
 }

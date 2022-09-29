@@ -34,9 +34,7 @@ int		drawsquare(t_data *data)
 
 void	checkbox(t_data *data, char c, int map_x, int map_y)
 {
-	data->mlx.color = 0;
-	if (c == '0')
-		data->mlx.color = 16777215;
+	data->mlx.color = 16777215;
 	if (c == '1')
 		data->mlx.color = 1;
 	if ((int)data->cam.pos_x == map_x && (int)data->cam.pos_y == map_y)
@@ -56,7 +54,7 @@ void	minimap(t_data *data)
 	data->minimap_y = 0;
 	while (y < data->map_heigth)
 	{
-		while (x <= data->map_width)
+		while (data->map[y][x])
 		{
 			checkbox(data, data->map[y][x], x, y);
 			x++;

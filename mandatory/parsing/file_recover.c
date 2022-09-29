@@ -62,18 +62,6 @@ char	**read_file(int fd, int size)
 	return (file);
 }
 
-void	free_file(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != NULL)
-	{
-		free(str[i]);
-		i++;
-	}
-}
-
 char	**file_recover(char *str)
 {
 	char	**file;
@@ -92,7 +80,7 @@ char	**file_recover(char *str)
 	file = read_file(fd, size);
 	if (!file)
 	{
-		free_file(file);
+		free_tab(file);
 		return (NULL);
 	}
 	return (file);
