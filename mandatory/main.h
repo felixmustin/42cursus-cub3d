@@ -105,6 +105,7 @@ typedef struct s_cam
     bool rotate;
     double rot_speed;
     double speed;
+    bool display;
 } t_cam;
 
 typedef struct s_data

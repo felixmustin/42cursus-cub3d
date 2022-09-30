@@ -12,8 +12,6 @@ void ft_free(t_data *data)
     free(data->map);
     i = 0;
     while (i < 5) {
-        //free(data->tex.tex[i]);
-        //free(data->tex.tex_tab[i]);
         free(data->tex.textures[i]);
         i++;
     }
@@ -31,7 +29,6 @@ int leave(t_data *data)
 
 int render(t_data *data)
 {
-    //if (data->cam.front || data->cam.back || data->cam.right || data->cam.left || data->cam.rotate || data->cam.display )
     if (data->cam.display)
     {
         data->cam.display = false;

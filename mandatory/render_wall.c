@@ -51,8 +51,9 @@ void ray_DDA(t_data *data)
             data->ray.map_y += data->ray.step_y;
             data->ray.side = 1;
         }
-        if (data->map[(int)data->ray.map_y][(int)data->ray.map_x] == '1')
+        if (data->map[(int)data->ray.map_y][(int)data->ray.map_x] == '1') {
             data->ray.hit = 1;
+        }
     }
     //distance perpandicular to camera plane
     if (data->ray.side == 0)
@@ -67,7 +68,6 @@ void ray_calc_column(t_data *data)
 
     data->draw_start = -data->line_height/2+(double)data->screen_heigth/2;
     data->draw_end = data->line_height/2+(double)data->screen_heigth/2;
-
     if (data->draw_start < 0)
         data->draw_start = 0;
     if (data->draw_end >= data->screen_heigth)
