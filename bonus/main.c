@@ -12,8 +12,8 @@ void ft_free(t_data *data)
     free(data->map);
     i = 0;
     while (i < 5) {
-        free(data->tex.tex[i]);
-        free(data->tex.tex_tab[i]);
+        //free(data->tex.tex[i]);
+        //free(data->tex.tex_tab[i]);
         free(data->tex.textures[i]);
         i++;
     }

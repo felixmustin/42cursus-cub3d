@@ -29,6 +29,8 @@ int	check_extension(t_data *data)
 	i = 0;
 	while (data->tex.textures[i] != NULL)
 	{
+		if (ft_strlen(data->tex.textures[i]) < 4)
+			return (0);
 		if (!check_xpm(data->tex.textures[i]))
 			return (0);
 		i++;

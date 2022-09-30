@@ -20,6 +20,7 @@ int	stock_texture(char *file, t_data *data)
 	if (!texture_already_fill(str, data))
 	{
 		printf("infos about texture are not correct\n");
+		free_tab(str);
 		return (0);
 	}
 	if (ft_strcmp(str[0], "NO") == 0 && data->tex.textures[0] == NULL)
@@ -30,6 +31,7 @@ int	stock_texture(char *file, t_data *data)
 		data->tex.textures[2] = ft_strdup_modif(str[1], '\n');
 	if (ft_strcmp(str[0], "EA") == 0 && data->tex.textures[3] == NULL)
 		data->tex.textures[3] = ft_strdup_modif(str[1], '\n');
+	free_tab(str);
 	return (1);
 }
 

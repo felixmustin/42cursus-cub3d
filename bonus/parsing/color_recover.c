@@ -21,18 +21,27 @@ int	stock_color(char *file, t_data *data)
 		return (0);
 	if ((ft_strcmp(str[0], "C") == 0 && data->floor_color != 0)
 		&& (ft_strcmp(str[0], "F") == 0 && data->ceiling_color != 0))
+	{
+		free_tab(str);
 		return (0);
+	}
 	if (ft_strcmp(str[0], "F") == 0 && data->floor_color == 0)
 	{
 		data->floor_color = get_color(str);
 		if (data->floor_color == -1)
+		{
+			free_tab(str);
 			return (0);
+		}
 	}
 	if (ft_strcmp(str[0], "C") == 0 && data->ceiling_color == 0)
 	{
 		data->ceiling_color = get_color(str);
 		if (data->ceiling_color == -1)
+		{
+			free_tab(str);
 			return (0);
+		}
 	}
 	free_tab(str);
 	return (1);

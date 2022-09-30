@@ -25,9 +25,9 @@ int	check_right_and_left(char *str, int i)
 	k = i;
 	while (str[j] != '\0' && str[j] != '1' && str[j] != 32)
 		j++;
-	while (str[k] != '1' && k >= 0 && str[k] != 32)
+	while (k >= 0 && str[k] != '1' && str[k] != 32)
 		k--;
-	if (str[j] == '1' && str[k] == '1')
+	if (k >= 0 && str[j] == '1' && str[k] == '1')
 		return (1);
 	return (0);
 }
@@ -41,9 +41,9 @@ int	check_up_and_down(char **str, int i, int j)
 	l = i;
 	while (str[k] != NULL && str[k][j] != '1' && str[k][j] != 32)
 		k++;
-	while (str[l][j] != '1' && l >= 0 && str[l][j] != 32)
+	while (l>= 0 && str[l][j] != '1' && str[l][j] != 32)
 		l--;
-	if (str[k][j] == '1' && str[l][j] == '1')
+	if (l >= 0 && str[k][j] == '1' && str[l][j] == '1')
 		return (1);
 	return (0);
 }
