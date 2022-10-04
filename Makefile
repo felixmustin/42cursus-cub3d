@@ -5,6 +5,7 @@ NAME_BONUS = cub3d_bonus
 SRC = mandatory/main.c \
 	mandatory/events.c \
 	mandatory/render_wall.c \
+	mandatory/render_wall2.c \
 	mandatory/render_floor_ceiling.c \
 	mandatory/move.c \
 	mandatory/mlx_utils.c \
@@ -26,6 +27,7 @@ SRC = mandatory/main.c \
 SRC_BONUS = bonus/main.c \
 		bonus/events.c \
 		bonus/render_wall.c \
+		bonus/render_wall2.c \
 		bonus/render_floor_ceiling.c \
 		bonus/move.c \
 		bonus/mlx_utils.c \

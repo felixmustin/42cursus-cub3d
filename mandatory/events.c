@@ -13,14 +13,13 @@ void	ft_key_press_2(int keycode, t_data *data)
 		data->cam.rot_speed = 0.1;
 	}	
 	else if (keycode == K_SHFT)
-        data->cam.speed += 0.05;
+		data->cam.speed += 0.05;
 }
 
 int	ft_key_press(int keycode, t_data *data)
 {
 	if (keycode == K_ESC)
-        data->leave = 1;
-
+		data->leave = 1;
 	if (keycode == K_Z)
 		data->cam.front = true;
 	else if (keycode == K_S)

@@ -1,74 +1,77 @@
 #include "main.h"
 
-void ft_free(t_data *data)
+void	ft_free(t_data *data)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < data->map_heigth) {
-        free(data->map[i]);
-        i++;
-    }
-    free(data->map);
-    i = 0;
-	 while (i < 5) {
-        free(data->tex.textures[i]);
-        i++;
-    }
-    free(data->tex.tex);
-    free(data->tex.tex_tab);
-    free(data->tex.textures);
+	i = 0;
+	while (i < data->map_heigth)
+	{
+		free(data->map[i]);
+		i++;
+	}
+	free(data->map);
+	i = 0;
+	while (i < 5)
+	{
+		free(data->tex.textures[i]);
+		i++;
+	}
+	free(data->tex.tex);
+	free(data->tex.tex_tab);
+	free(data->tex.textures);
 }
 
-int leave(t_data *data)
+int	leave(t_data *data)
 {
-    ft_clear_window(data);
-    ft_free(data);
-    exit (1);
+	ft_clear_window(data);
+	ft_free(data);
+	exit (1);
 }
 
-int render(t_data *data)
+int	render(t_data *data)
 {
-    if (data->cam.front || data->cam.back || data->cam.right || data->cam.left || data->cam.rotate || data->cam.display )
-    {
-        data->cam.display = false;
-        data->x = 0;
-        data->y = 0;
-        move(data, &data->cam);
-        while (data->x < data->screen_width)
-        {
-            raycast_wall(data);
-            color_floor_ceiling(data);
-            data->x++;
-        }
-    }
-    if (data->leave)
-        leave(data);
-    else
-        mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.mlx_win, data->mlx.mlx_img, 0, 0);
-    return(1);
+	if (data->cam.front || data->cam.back || data->cam.right || data->cam.left
+		|| data->cam.rotate || data->cam.display)
+	{
+		data->cam.display = false;
+		data->x = 0;
+		data->y = 0;
+		move(data, &data->cam);
+		while (data->x < data->screen_width)
+		{
+			raycast_wall(data);
+			color_floor_ceiling(data);
+			data->x++;
+		}
+	}
+	if (data->leave)
+		leave(data);
+	else
+		mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.mlx_win,
+			data->mlx.mlx_img, 0, 0);
+	return (1);
 }
 
-
-void prepare(t_data *data)
+void	prepare(t_data *data)
 {
-    data->mlx.mlx_ptr = mlx_init();
-    data->mlx.mlx_win = mlx_new_window(data->mlx.mlx_ptr, data->screen_width, data->screen_heigth, "cub3d");
-    ft_create_texture(data);
-    ft_create_image(data);
-    mlx_hook(data->mlx.mlx_win, ON_KEYDOWN, 1L<<0, ft_key_press, data);
-    mlx_hook(data->mlx.mlx_win, ON_KEYUP, 1L<<1, ft_key_release, data);
-    mlx_hook(data->mlx.mlx_win, ON_DESTROY, 0, leave, data);
-
-    mlx_loop_hook(data->mlx.mlx_ptr, render, data);
-    mlx_loop(data->mlx.mlx_ptr);
+	data->mlx.mlx_ptr = mlx_init();
+	data->mlx.mlx_win = mlx_new_window(data->mlx.mlx_ptr, data->screen_width,
+			data->screen_heigth, "cub3d");
+	ft_create_texture(data);
+	ft_create_image(data);
+	mlx_hook(data->mlx.mlx_win, ON_KEYDOWN, 1L << 0, ft_key_press, data);
+	mlx_hook(data->mlx.mlx_win, ON_KEYUP, 1L << 1, ft_key_release, data);
+	mlx_hook(data->mlx.mlx_win, ON_DESTROY, 0, leave, data);
+	mlx_loop_hook(data->mlx.mlx_ptr, render, data);
+	mlx_loop(data->mlx.mlx_ptr);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_data data;
+	t_data	data;
 
-    if (!parsing(argc, argv, &data))
+	if (!parsing(argc, argv, &data))
 		return (0);
-    prepare(&data);
+	prepare(&data);
 }

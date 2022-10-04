@@ -10,10 +10,10 @@ void	size_minimap(t_data *data)
 		data->sizeminimap = 10;
 }
 
-int		drawsquare(t_data *data)
+int	drawsquare(t_data *data)
 {
-	int i;
-	int v;
+	int	i;
+	int	v;
 
 	v = 0;
 	i = 0;
@@ -22,7 +22,10 @@ int		drawsquare(t_data *data)
 		while (v < data->sizeminimap)
 		{
 			if (data->mlx.color != 0)
-				my_mlx_pixel_put(data, data->minimap_x + v, data->minimap_y + i, data->mlx.color);
+			{
+				my_mlx_pixel_put(data, data->minimap_x + v,
+					data->minimap_y + i, data->mlx.color);
+			}
 			v++;
 		}
 		v = 0;
@@ -44,10 +47,10 @@ void	checkbox(t_data *data, char c, int map_x, int map_y)
 
 void	minimap(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
-    size_minimap(data);
+	size_minimap(data);
 	x = 0;
 	y = 0;
 	data->minimap_x = 0;
