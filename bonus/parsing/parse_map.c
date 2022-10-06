@@ -20,8 +20,8 @@ void	position_player2(t_data *data, char c)
 
 void	position_player(t_data *data, int x, int y, char c)
 {
-	data->cam.pos_x = (double)x + 0.5;;
-	data->cam.pos_y = (double)y + 0.5;;
+	data->cam.pos_x = (double)x;
+	data->cam.pos_y = (double)y;
 	if (c == 'N')
 	{
 		data->cam.dir_x = 0;

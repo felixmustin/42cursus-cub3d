@@ -1,5 +1,15 @@
 #include "../main.h"
 
+void	free_texture(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	free_tab(data->tex.textures);
+	free(data->tex.tex_tab);
+	free(data->tex.tex);
+}
+
 char	*ft_strdup_modif(char *str, char c)
 {
 	char	*dst;

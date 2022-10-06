@@ -66,6 +66,8 @@ int	color_recover(int i, char **file, t_data *data)
 	if (i == 0)
 	{
 		write(1, "error : color information are not correct\n", 42);
+		free_texture(data);
+		free_tab(file);
 		return (0);
 	}
 	return (i);

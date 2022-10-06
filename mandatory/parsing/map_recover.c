@@ -50,6 +50,11 @@ int	recup_map(t_data *data, char **file, int i)
 int	map_recover(t_data *data, char **file, int i)
 {
 	if (!recup_map(data, file, i))
+	{
+		free_tab(file);
+		free_tab(data->map);
+		free_texture(data);
 		return (0);
+	}
 	return (1);
 }

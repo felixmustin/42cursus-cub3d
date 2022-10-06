@@ -91,8 +91,8 @@ int	parsing(int ac, char **av, t_data *data)
 		return (0);
 	if (!map_recover(data, file, i))
 		return (0);
+	free_tab(file);
 	if (!parser(data))
 		return (0);
-	free_tab(file);
 	return (1);
 }

@@ -198,5 +198,6 @@ void	get_size(char **map, int *width, int *height);
 int		check_map(char **map);
 char	**file_to_texture(char *file);
 void	free_tab(char **tab);
+void	free_texture(t_data *data);
 
 #endif

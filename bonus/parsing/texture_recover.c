@@ -58,9 +58,9 @@ int	recup_texture(char **file, t_data *data)
 				return (0);
 		i++;
 	}
-	if (file[i] == NULL)
+	if (file[i] == NULL || !texture_is_full(data))
 	{
-		printf("file not complet\n");
+		printf("file not complete\n");
 		return (0);
 	}
 	return (i);
@@ -70,8 +70,16 @@ int	texture_recover(char **file, t_data *data, int i)
 {
 	i = recup_texture(file, data);
 	if (i == 0)
+	{
+		free_tab(file);
+		free_texture(data);
 		return (0);
+	}
 	if (file[i] == NULL)
+	{
+		free_tab(file);
+		free_texture(data);
 		return (0);
+	}
 	return (i);
 }
