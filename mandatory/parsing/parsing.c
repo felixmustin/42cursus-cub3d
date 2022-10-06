@@ -62,6 +62,7 @@ void	init_data(t_data *data)
 	data->cam.back = false;
 	data->cam.right = false;
 	data->cam.left = false;
+	data->cam.display = true;
 	data->cam.speed = 0.05;
 	data->leave = 0;
 	data->map_width = 0;

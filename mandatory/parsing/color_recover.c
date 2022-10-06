@@ -4,7 +4,8 @@ char	**file_to_color(char *file)
 {
 	char	**str;
 
-	str = ft_split(file, 32);
+	str = file_to_string(file);
+	printf("%d\n", ft_strlen_split(str));
 	if (!str)
 		return (NULL);
 	if (ft_strcmp(str[0], "F") != 0 && ft_strcmp(str[0], "C") != 0)

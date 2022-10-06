@@ -182,5 +182,6 @@ int		check_map(char **map);
 char	**file_to_texture(char *file);
 void	free_tab(char **tab);
 void	free_texture(t_data *data);
+char	**file_to_string(char *file);
 
 #endif

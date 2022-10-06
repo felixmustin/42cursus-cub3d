@@ -38,6 +38,7 @@ char	**file_to_texture(char *file)
 	if (ft_strcmp(str[0], "NO") != 0 && ft_strcmp(str[0], "SO") != 0
 		&& ft_strcmp(str[0], "WE") != 0 && ft_strcmp(str[0], "EA") != 0)
 	{
+		free_tab(str);
 		printf("infos about texture are not correct");
 		return (NULL);
 	}

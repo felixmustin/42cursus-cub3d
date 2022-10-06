@@ -59,7 +59,7 @@ OBJS_BONUS = ${SRC_BONUS:.c=.o}
 
 CC = gcc $(CCFLAG)
 
-CCFLAG = -Wall -Wextra -Werror 
+CCFLAG = -Wall -Wextra -Werror
 
 MLX		= ./minilibx
 MLX_LIB	= $(addprefix $(MLX),mlx.a)

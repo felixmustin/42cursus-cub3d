@@ -37,3 +37,43 @@ int	get_color(char	**str)
 	free_tab(split_color);
 	return (color);
 }
+
+char	*split_to_string(char **split)
+{
+	int		i;
+	char	*str;
+	char	*str1;
+
+	i = 2;
+	str = ft_strdup(split[1]);
+	while (split[i])
+	{
+		str1 = ft_strjoin(str, split[i]);
+		free(str);
+		str = ft_strdup(str1);
+		free(str1);
+		i++;
+	}
+	return (str);
+}
+
+char	**file_to_string(char *file)
+{
+	char	**str;
+	char	**split;
+
+	split = NULL;
+	str = ft_split(file, 32);
+	if (ft_strlen_split(str) > 2)
+	{
+		split = malloc(sizeof(char *) * 3);
+		if (!split)
+			return (NULL);
+		split[0] = ft_strdup(str[0]);
+		split[1] = split_to_string(str);
+		split[2] = NULL;
+		free_tab(str);
+		return (split);
+	}
+	return (str);
+}
