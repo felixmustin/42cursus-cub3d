@@ -27,7 +27,10 @@ int	get_color(char	**str)
 	if (!split_color)
 		return (0);
 	if (ft_strlen_split(split_color) != 3)
+	{
+		free_tab(split_color);
 		return (0);
+	}
 	check_color(split_color, &i);
 	if (i == 3)
 	{
