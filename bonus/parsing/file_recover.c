@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file_recover.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:27:58 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:28:00 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../main.h"
 
 int	file_size(int fd)
@@ -12,6 +24,7 @@ int	file_size(int fd)
 	r = read(fd, buffer, 5000000);
 	if (r <= 0)
 	{
+		printf("Error\n");
 		write(1, "The file is empty\n", 18);
 		return (0);
 	}
@@ -32,12 +45,14 @@ int	read_fd(char *file)
 	fd = open(file, O_DIRECTORY);
 	if (fd != -1)
 	{
+		printf("Error\n");
 		write(1, "error : arguments is a directory\n", 33);
 		return (0);
 	}
 	fd = open(file, O_RDONLY);
 	if (fd <= 0)
 	{
+		printf("Error\n");
 		write(1, "an error occured with the read of map\n", 38);
 		return (0);
 	}

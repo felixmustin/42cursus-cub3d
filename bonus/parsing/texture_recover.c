@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_recover.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:28:45 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:28:54 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../main.h"
 
 int	texture_already_fill(char **str, t_data *data)
@@ -19,6 +31,7 @@ int	stock_texture(char *file, t_data *data)
 		return (0);
 	if (!texture_already_fill(str, data))
 	{
+		printf("Error\n");
 		printf("infos about texture are not correct\n");
 		free_tab(str);
 		return (0);
@@ -60,6 +73,7 @@ int	recup_texture(char **file, t_data *data)
 	}
 	if (file[i] == NULL || !texture_is_full(data))
 	{
+		printf("Error\n");
 		printf("file not complete\n");
 		return (0);
 	}

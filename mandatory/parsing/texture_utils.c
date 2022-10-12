@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:26:01 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:26:02 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../main.h"
 
 void	free_texture(t_data *data)
@@ -39,6 +51,7 @@ char	**file_to_texture(char *file)
 		&& ft_strcmp(str[0], "WE") != 0 && ft_strcmp(str[0], "EA") != 0)
 	{
 		free_tab(str);
+		printf("Error\n");
 		printf("infos about texture are not correct");
 		return (NULL);
 	}

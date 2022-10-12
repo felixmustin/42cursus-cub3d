@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_texture.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:25:24 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:25:25 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../main.h"
 
 int	check_xpm(char *str)
@@ -58,11 +70,13 @@ int	parse_texture(t_data *data)
 {
 	if (!check_extension(data))
 	{
+		printf("Error\n");
 		write(1, "error : texture are not .xpm\n", 29);
 		return (0);
 	}
 	if (!check_acces(data))
 	{
+		printf("Error\n");
 		write(1, "error : texture files are not valid\n", 36);
 		return (0);
 	}

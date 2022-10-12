@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:25:19 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:25:21 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../main.h"
 
 void	position_player2(t_data *data, char c)
@@ -86,11 +98,13 @@ int	parse_map(t_data *data)
 {
 	if (!check_map(data->map))
 	{
+		printf("Error\n");
 		write(1, "error : map is invalid\n", 23);
 		return (0);
 	}
 	if (!map_enable(data))
 	{
+		printf("Error\n");
 		write(1, "error : map is invalid\n", 23);
 		return (0);
 	}

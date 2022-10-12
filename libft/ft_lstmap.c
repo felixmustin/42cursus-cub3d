@@ -17,8 +17,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*liste;
 	t_list	*new;
 
-    if (!lst || !f)
-        return (0);
+	if (!lst || !f)
+		return (0);
 	liste = malloc(sizeof(t_list));
 	if (!liste)
 		return (0);

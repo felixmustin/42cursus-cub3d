@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:28:28 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:28:29 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../main.h"
 
 int	check_ext(char *str)
@@ -29,11 +41,13 @@ int	check_arg(int ac, char **av)
 {
 	if (ac < 2)
 	{
+		printf("Error\n");
 		write(1, "Error, map as first parameter is required\n", 42);
 		return (0);
 	}
 	if (ac > 2)
 	{
+		printf("Error\n");
 		write(1, "Error, map is the only parameter required\n", 42);
 		return (0);
 	}
@@ -41,6 +55,7 @@ int	check_arg(int ac, char **av)
 	{
 		if (!check_ext(av[1]))
 		{
+			printf("Error\n");
 			write(1, "map format need to be .cub\n", 27);
 			return (0);
 		}
@@ -67,8 +82,8 @@ void	init_data(t_data *data)
 	data->leave = 0;
 	data->map_width = 0;
 	data->map_heigth = 0;
-	data->screen_width = 640;
-	data->screen_heigth = 480;
+	data->screen_width = 800;
+	data->screen_heigth = 640;
 }
 
 int	parsing(int ac, char **av, t_data *data)

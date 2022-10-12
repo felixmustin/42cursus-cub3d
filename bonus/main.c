@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:26:18 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:26:19 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "main.h"
 
 void	ft_free(t_data *data)
@@ -77,7 +89,8 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	parsing(argc, argv, &data);
+	if (!parsing(argc, argv, &data))
+		return (0);
 	init_bonus(&data);
 	prepare(&data);
 }

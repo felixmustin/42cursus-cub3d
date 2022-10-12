@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:26:23 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:26:24 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MAIN_H
 # define MAIN_H
 
@@ -78,11 +90,11 @@ typedef struct s_tex
 	int		tex_x;
 	int		tex_y;
 
-	double	floor_x; // positions X et Y du texel du sol au bas du mur
+	double	floor_x;
 	double	floor_y;
-	int		floor_tex_x;// position du texel sur X
+	int		floor_tex_x;
 	int		floor_tex_y;
-	double	pix_pos_x;// position du pixel sur X
+	double	pix_pos_x;
 	double	pix_pos_y;
 
 }	t_tex;
@@ -199,6 +211,6 @@ int		check_map(char **map);
 char	**file_to_texture(char *file);
 void	free_tab(char **tab);
 void	free_texture(t_data *data);
-char	**file_to_string(char *file);;
+char	**file_to_string(char *file);
 
 #endif

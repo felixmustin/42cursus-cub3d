@@ -1,14 +1,16 @@
-#include "main.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:26:28 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:26:29 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	size_minimap(t_data *data)
-{
-	if (data->screen_width < 700 || data->screen_heigth < 700)
-		data->sizeminimap = 5;
-	else if (data->screen_width < 300 || data->screen_heigth < 300)
-		data->sizeminimap = 3;
-	else
-		data->sizeminimap = 10;
-}
+#include "main.h"
 
 int	drawsquare(t_data *data)
 {
@@ -37,7 +39,9 @@ int	drawsquare(t_data *data)
 
 void	checkbox(t_data *data, char c, int map_x, int map_y)
 {
-	data->mlx.color = 16777215;
+	data->mlx.color = 0;
+	if (c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
+		data->mlx.color = 0xFFFFFF;
 	if (c == '1')
 		data->mlx.color = 1;
 	if ((int)data->cam.pos_x == map_x && (int)data->cam.pos_y == map_y)
@@ -50,7 +54,9 @@ void	minimap(t_data *data)
 	int	x;
 	int	y;
 
-	size_minimap(data);
+	data->sizeminimap = 6;
+	if (data->map_heigth > 50 || data->map_width > 50)
+		data->sizeminimap = 3;
 	x = 0;
 	y = 0;
 	data->minimap_x = 0;

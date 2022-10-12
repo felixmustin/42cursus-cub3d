@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color_recover.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:27:49 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:27:50 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../main.h"
 
 char	**file_to_color(char *file)
@@ -68,6 +80,7 @@ int	color_recover(int i, char **file, t_data *data)
 	i = recup_color(i, file, data);
 	if (i == 0)
 	{
+		printf("Error\n");
 		write(1, "error : color information are not correct\n", 42);
 		free_texture(data);
 		free_tab(file);

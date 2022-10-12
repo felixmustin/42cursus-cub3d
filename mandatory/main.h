@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/12 12:24:25 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:24:26 by fmustin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MAIN_H
 # define MAIN_H
 
@@ -35,21 +47,21 @@ enum {
 typedef struct s_ray
 {
 	double	cam_x;
-	double	ray_dir_x; //positions/direction du rayon
+	double	ray_dir_x;
 	double	ray_dir_y;
 	double	ray_pos_x;
 	double	ray_pos_y;
-	double	map_x; //sur quelle case est la camera
+	double	map_x;
 	double	map_y;
-	double	side_dist_x; //longueur du rayon
+	double	side_dist_x;
 	double	side_dist_y;
-	double	delta_dist_x; // longueur du rayon entre chaque intersection
+	double	delta_dist_x;
 	double	delta_dist_y;
-	int		step_x; //+1/-1 vecteur
+	int		step_x;
 	int		step_y;
-	int		hit; //vecteur touche un mur
-	int		side; //orientation du mur
-	double	wall_dist; //distance corrigée du rayon
+	int		hit;
+	int		side;
+	double	wall_dist;
 }	t_ray;
 
 typedef struct s_mlx
@@ -75,12 +87,12 @@ typedef struct s_tex
 	int		h;
 
 	double	wall_x;
-	int		tex_x; //coordinate of column in texture
+	int		tex_x;
 	int		tex_y;
 
-	int		floor_tex_x;// position du texel sur X
+	int		floor_tex_x;
 	int		floor_tex_y;
-	double	pix_pos_x;// position du pixel sur X
+	double	pix_pos_x;
 	double	pix_pos_y;
 
 }	t_tex;
@@ -126,7 +138,6 @@ typedef struct s_data
 	int		x;
 	int		y;
 
-	//traced line
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
