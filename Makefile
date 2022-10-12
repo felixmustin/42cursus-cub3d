@@ -22,6 +22,7 @@ SRC = mandatory/main.c \
 	mandatory/parsing/size_map.c \
 	mandatory/parsing/check_map.c \
 	mandatory/parsing/texture_utils.c \
+	mandatory/parsing/texture_or_color.c \
 	gnl/get_next_line.c \
 
 SRC_BONUS = bonus/main.c \
@@ -47,6 +48,7 @@ SRC_BONUS = bonus/main.c \
 		bonus/parsing/size_map.c \
 		bonus/parsing/check_map.c \
 		bonus/parsing/texture_utils.c \
+		bonus/parsing/texture_or_color.c \
 		gnl/get_next_line.c \
 
 INCLUDES = mandatory/main.h
@@ -59,7 +61,7 @@ OBJS_BONUS = ${SRC_BONUS:.c=.o}
 
 CC = gcc $(CCFLAG)
 
-CCFLAG = -Wall -Wextra -Werror
+CCFLAG = -Wall -Wextra -Werror -fsanitize=address -g
 
 MLX		= ./minilibx
 MLX_LIB	= $(addprefix $(MLX),mlx.a)

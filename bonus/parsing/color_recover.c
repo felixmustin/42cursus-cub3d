@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 12:27:49 by fmustin           #+#    #+#             */
-/*   Updated: 2022/10/12 12:27:50 by fmustin          ###   ########.fr       */
+/*   Created: 2022/10/12 12:24:56 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:24:57 by fmustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,28 +63,21 @@ int	color_is_full(t_data *data)
 		return (0);
 }
 
-int	recup_color(int i, char **file, t_data *data)
+int	recup_color(char *file, t_data *data)
 {
-	while (file[i] != NULL && !color_is_full(data))
-	{
-		if (file[i] && file[i][0] != '\n' && file[i][0] != '\0')
-			if (!stock_color(file[i], data))
-				return (0);
-		i++;
-	}
-	return (i);
+	if (!stock_color(file, data))
+		return (0);
+	return (1);
 }
 
-int	color_recover(int i, char **file, t_data *data)
+int	color_recover(char *file, t_data *data)
 {
-	i = recup_color(i, file, data);
-	if (i == 0)
+	if (!recup_color(file, data))
 	{
 		printf("Error\n");
 		write(1, "error : color information are not correct\n", 42);
 		free_texture(data);
-		free_tab(file);
 		return (0);
 	}
-	return (i);
+	return (1);
 }

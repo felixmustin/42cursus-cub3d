@@ -179,8 +179,8 @@ int		ft_strlen_split(char **str);
 char	*ft_strdup_modif(char *str, char c);
 int		ft_strcmp(const char *s1, const char *s2);
 int		parsing_recover(int ac, char **av, t_data *data);
-int		texture_recover(char **file, t_data *data, int i);
-int		color_recover(int i, char **file, t_data *data);
+int		texture_recover(char *file, t_data *data);
+int		color_recover(char *file, t_data *data);
 int		map_recover(t_data *data, char **file, int i);
 int		malloc_texture(t_data *data);
 char	**file_recover(char *str);
@@ -194,5 +194,8 @@ char	**file_to_texture(char *file);
 void	free_tab(char **tab);
 void	free_texture(t_data *data);
 char	**file_to_string(char *file);
+int		texture_or_color(t_data *data, char **file);
+int		texture_is_full(t_data *data);
+int		color_is_full(t_data *data);
 
 #endif

@@ -99,12 +99,13 @@ int	parsing(int ac, char **av, t_data *data)
 	file = file_recover(av[1]);
 	if (!file)
 		return (0);
-	i = texture_recover(file, data, i);
+	malloc_texture(data);
+	i = texture_or_color(data, file);
 	if (i == 0)
+	{
+		free_tab(file);
 		return (0);
-	i = color_recover(i, file, data);
-	if (i == 0)
-		return (0);
+	}
 	if (!map_recover(data, file, i))
 		return (0);
 	free_tab(file);

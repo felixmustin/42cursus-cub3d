@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 12:28:45 by fmustin           #+#    #+#             */
-/*   Updated: 2022/10/12 12:28:54 by fmustin          ###   ########.fr       */
+/*   Created: 2022/10/12 12:25:54 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:25:56 by fmustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,42 +58,19 @@ int	texture_is_full(t_data *data)
 		return (0);
 }
 
-int	recup_texture(char **file, t_data *data)
+int	recup_texture(char *file, t_data *data)
 {
-	int	i;
-
-	i = 0;
-	malloc_texture(data);
-	while (file[i] != NULL && !texture_is_full(data))
-	{
-		if (file[i] && file[i][0] != '\n' && file[i][0] != '\0')
-			if (!stock_texture(file[i], data))
-				return (0);
-		i++;
-	}
-	if (file[i] == NULL || !texture_is_full(data))
-	{
-		printf("Error\n");
-		printf("file not complete\n");
+	if (!stock_texture(file, data))
 		return (0);
-	}
-	return (i);
+	return (1);
 }
 
-int	texture_recover(char **file, t_data *data, int i)
+int	texture_recover(char *file, t_data *data)
 {
-	i = recup_texture(file, data);
-	if (i == 0)
+	if (!recup_texture(file, data))
 	{
-		free_tab(file);
 		free_texture(data);
 		return (0);
 	}
-	if (file[i] == NULL)
-	{
-		free_tab(file);
-		free_texture(data);
-		return (0);
-	}
-	return (i);
+	return (1);
 }

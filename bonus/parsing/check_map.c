@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 12:27:45 by fmustin           #+#    #+#             */
-/*   Updated: 2022/10/12 12:27:46 by fmustin          ###   ########.fr       */
+/*   Created: 2022/10/12 12:24:52 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/12 12:24:53 by fmustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_up_and_down(char **str, int i, int j)
 
 	k = i;
 	l = i;
-	while (str[k] != NULL && str[k][j] != '1' && str[k][j] != 32)
+	while (str[k] != NULL && str[k][j] && str[k][j] != '1' && str[k][j] != 32)
 		k++;
 	while (l >= 0 && str[l][j] != '1' && str[l][j] != 32)
 		l--;
