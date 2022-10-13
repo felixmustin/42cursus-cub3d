@@ -1,6 +1,6 @@
-NAME = cub3d
+NAME = cub3D
 
-NAME_BONUS = cub3d_bonus
+NAME_BONUS = cub3D_bonus
 
 SRC = mandatory/main.c \
 	mandatory/events.c \
