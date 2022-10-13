@@ -21,9 +21,16 @@ int	check_line(char *file)
 		return (0);
 	if (ft_strcmp(str[0], "NO") == 0 || ft_strcmp(str[0], "SO") == 0
 		|| ft_strcmp(str[0], "WE") == 0 || ft_strcmp(str[0], "EA") == 0)
+	{
+		free_tab(str);
 		return (1);
+	}
 	if (ft_strcmp(str[0], "F") == 0 || ft_strcmp(str[0], "C") == 0)
+	{
+		free_tab(str);
 		return (2);
+	}
+	free_tab(str);
 	printf("Error\ninfos are not correct\n");
 	return (3);
 }

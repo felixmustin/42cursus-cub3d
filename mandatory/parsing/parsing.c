@@ -99,7 +99,8 @@ int	parsing(int ac, char **av, t_data *data)
 	file = file_recover(av[1]);
 	if (!file)
 		return (0);
-	malloc_texture(data);
+	if (!malloc_texture(data))
+		return (0);
 	i = texture_or_color(data, file);
 	if (i == 0)
 	{

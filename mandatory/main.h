@@ -197,5 +197,7 @@ char	**file_to_string(char *file);
 int		texture_or_color(t_data *data, char **file);
 int		texture_is_full(t_data *data);
 int		color_is_full(t_data *data);
+int		stock_texture(char *file, t_data *data);
+int		texture_already_fill(char **str, t_data *data);
 
 #endif

@@ -23,6 +23,7 @@ SRC = mandatory/main.c \
 	mandatory/parsing/check_map.c \
 	mandatory/parsing/texture_utils.c \
 	mandatory/parsing/texture_or_color.c \
+	mandatory/parsing/stock_texture.c \
 	gnl/get_next_line.c \
 
 SRC_BONUS = bonus/main.c \
@@ -61,7 +62,7 @@ OBJS_BONUS = ${SRC_BONUS:.c=.o}
 
 CC = gcc $(CCFLAG)
 
-CCFLAG = -Wall -Wextra -Werror -fsanitize=address -g
+CCFLAG = -Wall -Wextra -Werror
 
 MLX		= ./minilibx
 MLX_LIB	= $(addprefix $(MLX),mlx.a)

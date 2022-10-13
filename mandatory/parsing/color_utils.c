@@ -61,6 +61,8 @@ char	*split_to_string(char **split)
 
 	i = 2;
 	str = ft_strdup(split[1]);
+	if (!str)
+		return (NULL);
 	while (split[i])
 	{
 		str1 = ft_strjoin(str, split[i]);
@@ -85,8 +87,14 @@ char	**file_to_string(char *file)
 		if (!split)
 			return (NULL);
 		split[0] = ft_strdup(str[0]);
+		if (!split[0])
+			return (NULL);
 		split[1] = split_to_string(str);
+		if (!split[1])
+			return (NULL);
 		split[2] = NULL;
+		if (!split[2])
+			return (NULL);
 		free_tab(str);
 		return (split);
 	}
