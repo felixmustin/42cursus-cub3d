@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stock_texture.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmillet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/13 17:14:16 by cmillet           #+#    #+#             */
+/*   Updated: 2022/10/13 17:14:19 by cmillet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../main.h"
 
 int	stock_texture3(t_data *data, char **str)
@@ -11,7 +23,7 @@ int	stock_texture3(t_data *data, char **str)
 			return (0);
 		}
 	}
-	return (1);	
+	return (1);
 }
 
 int	stock_texture2(t_data *data, char **str)

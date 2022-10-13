@@ -30,7 +30,7 @@ char	*ft_strdup_modif(char *str, char c)
 	i = 0;
 	if (!str)
 		return (NULL);
-	dst = 0;//malloc(sizeof(char) * (ft_strlen(str) + 1));
+	dst = malloc(sizeof(char) * (ft_strlen(str) + 1));
 	if (!dst)
 		return (0);
 	while (str[i] != '\0' && str[i] != c)

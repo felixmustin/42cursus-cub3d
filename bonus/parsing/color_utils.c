@@ -61,12 +61,18 @@ char	*split_to_string(char **split)
 
 	i = 2;
 	str = ft_strdup(split[1]);
+	if (!str)
+		return (NULL);
 	while (split[i])
 	{
 		str1 = ft_strjoin(str, split[i]);
 		free(str);
+		if (!str1)
+			return (NULL);
 		str = ft_strdup(str1);
 		free(str1);
+		if (!str)
+			return (NULL);
 		i++;
 	}
 	return (str);
@@ -79,13 +85,19 @@ char	**file_to_string(char *file)
 
 	split = NULL;
 	str = ft_split(file, 32);
+	if (!str)
+		return (NULL);
 	if (ft_strlen_split(str) > 2)
 	{
 		split = malloc(sizeof(char *) * 3);
 		if (!split)
 			return (NULL);
 		split[0] = ft_strdup(str[0]);
+		if (!split[0])
+			return (NULL);
 		split[1] = split_to_string(str);
+		if (!split[1])
+			return (NULL);
 		split[2] = NULL;
 		free_tab(str);
 		return (split);
