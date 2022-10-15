@@ -44,10 +44,10 @@ int	malloc_texture(t_data *data)
 {
 	int	i;
 
-	i = 0;
 	data->tex.textures = malloc(sizeof(char *) * 5);
 	if (!data->tex.textures)
 		return (0);
+	i = 0;
 	while (i < 5)
 	{
 		data->tex.textures[i] = NULL;
@@ -55,12 +55,17 @@ int	malloc_texture(t_data *data)
 	}
 	data->tex.tex = malloc(sizeof(void *) * 5);
 	if (!data->tex.tex)
+	{
+		free(data->tex.textures);
 		return (0);
+	}
 	data->tex.tex_tab = malloc(sizeof(char *) * 5);
 	if (!data->tex.tex_tab)
+	{
+		free(data->tex.textures);
+		free(data->tex.tex);
 		return (0);
-	data->tex.w = 64;
-	data->tex.h = 64;
+	}
 	return (1);
 }
 

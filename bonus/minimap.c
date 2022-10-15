@@ -54,7 +54,7 @@ void	minimap(t_data *data)
 	int	x;
 	int	y;
 
-	data->sizeminimap = 6;
+	data->sizeminimap = 10;
 	if (data->map_heigth > 50 || data->map_width > 50)
 		data->sizeminimap = 3;
 	x = 0;

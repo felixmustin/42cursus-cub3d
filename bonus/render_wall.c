@@ -60,13 +60,13 @@ void	raycast_wall(t_data *data)
 			((data->y * 2 - data->screen_heigth + data->line_height)
 				* (data->tex.h / 2) / data->line_height);
 		if (data->ray.side == 0 && data->ray.ray_dir_x > 0)
-			data->color_int = 0;
-		else if (data->ray.side == 0 && data->ray.ray_dir_x < 0)
-			data->color_int = 1;
-		else if (data->ray.side == 1 && data->ray.ray_dir_y > 0)
-			data->color_int = 2;
-		else if (data->ray.side == 1 && data->ray.ray_dir_y < 0)
 			data->color_int = 3;
+		else if (data->ray.side == 0 && data->ray.ray_dir_x < 0)
+			data->color_int = 2;
+		else if (data->ray.side == 1 && data->ray.ray_dir_y > 0)
+			data->color_int = 1;
+		else if (data->ray.side == 1 && data->ray.ray_dir_y < 0)
+			data->color_int = 0;
 		data->mlx.color = ((unsigned int *)data->tex.tex_tab[data->color_int])
 		[(data->tex.w * data->tex.tex_y + data->tex.tex_x)];
 		my_mlx_pixel_put(data, data->x, data->y, data->mlx.color);

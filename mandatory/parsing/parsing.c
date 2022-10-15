@@ -84,6 +84,15 @@ void	init_data(t_data *data)
 	data->map_heigth = 0;
 	data->screen_width = 800;
 	data->screen_heigth = 640;
+	data->tex.w = 64;
+	data->tex.h = 64;
+}
+
+int	parsing2(t_data *data)
+{
+	if (!parser(data))
+		return (0);
+	return (1);
 }
 
 int	parsing(int ac, char **av, t_data *data)
@@ -93,14 +102,16 @@ int	parsing(int ac, char **av, t_data *data)
 
 	i = 0;
 	file = NULL;
-	init_data(data);
 	if (!check_arg(ac, av))
 		return (0);
 	file = file_recover(av[1]);
 	if (!file)
 		return (0);
 	if (!malloc_texture(data))
+	{
+		free_tab(file);
 		return (0);
+	}
 	i = texture_or_color(data, file);
 	if (i == 0)
 	{
@@ -110,7 +121,5 @@ int	parsing(int ac, char **av, t_data *data)
 	if (!map_recover(data, file, i))
 		return (0);
 	free_tab(file);
-	if (!parser(data))
-		return (0);
-	return (1);
+	return (parsing2(data));
 }

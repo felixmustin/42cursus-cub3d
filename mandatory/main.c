@@ -83,6 +83,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	init_data(&data);
 	if (!parsing(argc, argv, &data))
 		return (0);
 	prepare(&data);
