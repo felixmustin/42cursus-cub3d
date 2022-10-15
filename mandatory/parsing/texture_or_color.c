@@ -12,13 +12,16 @@
 
 #include "../main.h"
 
-int	check_line(char *file)
+int	check_line(char *file, t_data *data)
 {
 	char	**str;
 
 	str = ft_split(file, 32);
 	if (!str)
+	{
+		free_texture(data);
 		return (0);
+	}
 	if (ft_strcmp(str[0], "NO") == 0 || ft_strcmp(str[0], "SO") == 0
 		|| ft_strcmp(str[0], "WE") == 0 || ft_strcmp(str[0], "EA") == 0)
 	{
@@ -34,6 +37,7 @@ int	check_line(char *file)
 	if (!empty_line(file))
 		return (4);
 	printf("Error\ninfos are not correct\n");
+	free_texture(data);
 	return (3);
 }
 
@@ -47,12 +51,9 @@ int	texture_or_color(t_data *data, char **file)
 	{
 		if (file[i][0] != '\n' && file[i][0] != '\0')
 		{
-			check = check_line(file[i]);
+			check = check_line(file[i], data);
 			if (!check || check == 3)
-			{
-				free_texture(data);
 				return (0);
-			}
 			if (check == 1)
 				if (!texture_recover(file[i], data))
 					return (0);
@@ -62,6 +63,9 @@ int	texture_or_color(t_data *data, char **file)
 		}
 	}
 	if (!file[i] || (!color_is_full(data) || !texture_is_full(data)))
+	{
+		free_texture(data);
 		return (0);
+	}
 	return (i);
 }
