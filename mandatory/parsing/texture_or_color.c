@@ -31,6 +31,8 @@ int	check_line(char *file)
 		return (2);
 	}
 	free_tab(str);
+	if (!empty_line(file))
+		return (4);
 	printf("Error\ninfos are not correct\n");
 	return (3);
 }
@@ -47,7 +49,10 @@ int	texture_or_color(t_data *data, char **file)
 		{
 			check = check_line(file[i]);
 			if (!check || check == 3)
+			{
+				free_texture(data);
 				return (0);
+			}
 			if (check == 1)
 				if (!texture_recover(file[i], data))
 					return (0);

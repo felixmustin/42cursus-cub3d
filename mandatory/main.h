@@ -200,5 +200,6 @@ int		color_is_full(t_data *data);
 int		stock_texture(char *file, t_data *data);
 int		texture_already_fill(char **str, t_data *data);
 void	init_data(t_data *data);
+int		empty_line(char *str);
 
 #endif
