@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   fill_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmustin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/07 17:04:48 by fmustin           #+#    #+#             */
-/*   Updated: 2021/10/08 13:38:07 by fmustin          ###   ########.fr       */
+/*   Created: 2022/10/17 12:22:48 by fmustin           #+#    #+#             */
+/*   Updated: 2022/10/17 12:22:50 by fmustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../main.h"
 
-char	*ft_strdup(const char *s1)
+char	**fill_color(char **str)
 {
-	size_t	i;
-	size_t	len;
-	char	*dst;
+	char	**split;
 
-	if (!s1)
+	split = malloc(sizeof(char *) * 3);
+	if (!split)
 		return (NULL);
-	len = ft_strlen(s1);
-	dst = malloc (sizeof(char) * (len + 1));
-	if (!dst)
-		return (0);
-	i = 0;
-	while (i < len)
+	split[0] = ft_strdup(str[0]);
+	if (!split[0])
 	{
-		dst[i] = s1[i];
-		i++;
+		free(split);
+		return (NULL);
 	}
-	dst[i] = 0;
-	return (dst);
+	split[1] = split_to_string(str);
+	if (!split[1])
+	{
+		free(split[0]);
+		free(split);
+		return (NULL);
+	}
+	split[2] = NULL;
+	return (split);
 }

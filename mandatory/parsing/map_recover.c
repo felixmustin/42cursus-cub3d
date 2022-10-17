@@ -48,7 +48,7 @@ int	recup_map(t_data *data, char **file, int i)
 		return (0);
 	while (file[i] != NULL)
 	{
-		if (file[i] != NULL && file[i][0] != '\n')
+		if (file[i] != NULL && file[i][0] != '\n' && empty_line(file[i]))
 		{
 			data->map[j] = ft_strdup_modif(file[i], '\n');
 			if (!data->map[j])

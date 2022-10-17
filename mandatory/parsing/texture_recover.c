@@ -43,6 +43,7 @@ int	texture_recover(char *file, t_data *data)
 {
 	if (!recup_texture(file, data))
 	{
+		printf("oui\n");
 		free_texture(data);
 		return (0);
 	}

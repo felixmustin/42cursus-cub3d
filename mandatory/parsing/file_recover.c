@@ -59,6 +59,20 @@ int	read_fd(char *file)
 	return (fd);
 }
 
+char	**free_gnl(int i, char **str)
+{
+	int	j;
+
+	j = 0;
+	while (j < i)
+	{
+		free(str[j]);
+		j++;
+	}
+	free(str);
+	return (NULL);
+}
+
 char	**read_file(int fd, int size)
 {
 	int		i;
@@ -71,6 +85,8 @@ char	**read_file(int fd, int size)
 	while (i < size)
 	{
 		file[i] = get_next_line(fd);
+		if (!file[i] && i < size)
+			return (free_gnl(i, file));
 		i++;
 	}
 	file[i] = NULL;

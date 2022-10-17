@@ -55,7 +55,7 @@ int	check_up_and_down(char **str, int i, int j)
 		k++;
 	while (l >= 0 && str[l][j] != '1' && str[l][j] != 32)
 		l--;
-	if (l >= 0 && str[k][j] == '1' && str[l][j] == '1')
+	if (l >= 0 && str[k] && str[l] && str[k][j] == '1' && str[l][j] == '1')
 		return (1);
 	return (0);
 }

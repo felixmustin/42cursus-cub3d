@@ -24,6 +24,7 @@ SRC = mandatory/main.c \
 	mandatory/parsing/texture_utils.c \
 	mandatory/parsing/texture_or_color.c \
 	mandatory/parsing/stock_texture.c \
+	mandatory/parsing/fill_color.c \
 	gnl/get_next_line.c \
 
 SRC_BONUS = bonus/main.c \

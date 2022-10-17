@@ -89,17 +89,12 @@ char	**file_to_string(char *file)
 		return (NULL);
 	if (ft_strlen_split(str) > 2)
 	{
-		split = malloc(sizeof(char *) * 3);
+		split = fill_color(str);
 		if (!split)
+		{
+			free_tab(str);
 			return (NULL);
-		split[0] = ft_strdup(str[0]);
-		if (!split[0])
-			return (NULL);
-		split[1] = split_to_string(str);
-		if (!split[1])
-			return (NULL);
-		split[2] = NULL;
-		free_tab(str);
+		}
 		return (split);
 	}
 	return (str);
