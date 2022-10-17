@@ -42,7 +42,7 @@ void	ft_key_press_2(int keycode, t_data *data)
 		data->cam.rot_speed = 0.1;
 	}	
 	else if (keycode == K_SHFT)
-		data->cam.speed += 0.05;
+		data->cam.sp += 0.05;
 }
 
 int	ft_key_press(int keycode, t_data *data)
@@ -83,7 +83,7 @@ int	ft_key_release(int keycode, t_data *data)
 		else if (keycode == K_AR_R)
 			data->cam.rotate = false;
 		else if (keycode == K_SHFT)
-			data->cam.speed -= 0.05;
+			data->cam.sp -= 0.05;
 	}
 	return (1);
 }

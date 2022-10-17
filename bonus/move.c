@@ -29,72 +29,105 @@ void	rotate_cam(t_cam *cam)
 		+ cam->plane_x * cos(-cam->rot_speed);
 }
 
-void	move_2(t_data *data, t_cam *cam)
+void	move_4(t_data *d, t_cam *c)
 {
-	if (cam->rotate)
+	double	tmp_y;
+	double	tmp_x;
+
+	tmp_y = c->pos_y - (c->plane_y * c->sp);
+	tmp_x = c->pos_x - (c->plane_x * c->sp);
+	if (c->left)
 	{
-		rotate_cam(cam);
-	}
-	if (cam->right)
-	{
-		if (data->map[(int)(cam->pos_y + cam->plane_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y + 0.1 + cam->plane_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y + cam->plane_y * cam->speed)] [(int)(cam->pos_x + 0.1)] != 49
-			&& data->map[(int)(cam->pos_y - 0.1 + cam->plane_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y + cam->plane_y * cam->speed)] [(int)(cam->pos_x - 0.1)] != 49)
-			cam->pos_y += cam->plane_y * cam->speed;
-		if (data->map[(int)cam->pos_y] [(int)(cam->pos_x + cam->plane_x * cam->speed)] != 49
-			&& data->map[(int)cam->pos_y] [(int)(cam->pos_x + 0.1 + cam->plane_x * cam->speed)] != 49
-			&& data->map[(int)(cam->pos_y + 0.1)] [(int)(cam->pos_x + cam->plane_x * cam->speed)] != 49
-			&& data->map[(int)cam->pos_y] [(int)(cam->pos_x - 0.1 + cam->plane_x * cam->speed)] != 49
-			&& data->map[(int)(cam->pos_y - 0.1)] [(int)(cam->pos_x + cam->plane_x * cam->speed)] != 49)
-			cam->pos_x += cam->plane_x * cam->speed;
-	}
-	if (cam->left)
-	{
-		if (data->map[(int)(cam->pos_y - cam->plane_y * cam->speed)][(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y + 0.1 - cam->plane_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y - cam->plane_y * cam->speed)] [(int)(cam->pos_x + 0.1)] != 49
-			&& data->map[(int)(cam->pos_y - 0.1 - cam->plane_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y - cam->plane_y * cam->speed)] [(int)(cam->pos_x - 0.1)] != 49)
-			cam->pos_y -= cam->plane_y * cam->speed;
-		if (data->map[(int)cam->pos_y] [(int)(cam->pos_x - cam->plane_x * cam->speed)] != 49
-			&& data->map[(int)cam->pos_y] [(int)(cam->pos_x + 0.1 - cam->plane_x * cam->speed)] != 49
-			&& data->map[(int)(cam->pos_y + 0.1)] [(int)(cam->pos_x - cam->plane_x * cam->speed)] != 49
-			&& data->map[(int)cam->pos_y] [(int)(cam->pos_x - 0.1 - cam->plane_x * cam->speed)] != 49
-			&& data->map[(int)(cam->pos_y - 0.1)] [(int)(cam->pos_x - cam->plane_x * cam->speed)] != 49)
-			cam->pos_x -= cam->plane_x * cam->speed;
+		if (d->map[(int)(tmp_y)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y + 0.1)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y)][(int)(c->pos_x + 0.1)] != 49
+			&& d->map[(int)(tmp_y - 0.1)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y)][(int)(c->pos_x - 0.1)] != 49)
+			c->pos_y -= c->plane_y * c->sp;
+		if (d->map[(int)c->pos_y][(int)(tmp_x)] != 49
+			&& d->map[(int)(c->pos_y + 0.1)][(int)(tmp_x)] != 49
+			&& d->map[(int)c->pos_y][(int)(tmp_x + 0.1)] != 49
+			&& d->map[(int)(c->pos_y - 0.1)][(int)(tmp_x)] != 49
+			&& d->map[(int)c->pos_y][(int)(tmp_x - 0.1)] != 49)
+			c->pos_x -= c->plane_x * c->sp;
 	}
 }
 
-void	move(t_data *data, t_cam *cam)
+void	move_3(t_data *d, t_cam *c)
 {
-	if (cam->front)
+	double	tmp_y;
+	double	tmp_x;
+
+	tmp_y = c->pos_y + (c->plane_y * c->sp);
+	tmp_x = c->pos_x + (c->plane_x * c->sp);
+	if (c->rotate)
 	{
-		if (data->map[(int)(cam->pos_y + cam->dir_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y + 0.1 + cam->dir_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y + cam->dir_y * cam->speed)] [(int)(cam->pos_x + 0.1)] != 49
-			&& data->map[(int)(cam->pos_y - 0.1 + cam->dir_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y + cam->dir_y * cam->speed)] [(int)(cam->pos_x - 0.1)] != 49)
-			cam->pos_y += cam->dir_y * cam->speed;
-		if (data->map[(int)cam->pos_y] [(int)(cam->pos_x + cam->dir_x * cam->speed)] != 49
-			&& data->map[(int)(cam->pos_y + 0.1)] [(int)(cam->pos_x + cam->dir_x * cam->speed)] != 49
-			&& data->map[(int)cam->pos_y] [(int)(cam->pos_x + 0.1 + cam->dir_x * cam->speed)] != 49
-			&& data->map[(int)(cam->pos_y - 0.1)] [(int)(cam->pos_x + cam->dir_x * cam->speed)] != 49
-			&& data->map[(int)cam->pos_y] [(int)(cam->pos_x - 0.1 + cam->dir_x * cam->speed)] != 49)
-			cam->pos_x += cam->dir_x * cam->speed;
+		rotate_cam(c);
 	}
-	if (cam->back)
+	if (c->right)
 	{
-		if (data->map[(int)(cam->pos_y - cam->dir_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y + 0.1 - cam->dir_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y - cam->dir_y * cam->speed)] [(int)(cam->pos_x + 0.1)] != 49
-			&& data->map[(int)(cam->pos_y - 0.1 - cam->dir_y * cam->speed)] [(int)cam->pos_x] != 49
-			&& data->map[(int)(cam->pos_y - cam->dir_y * cam->speed)] [(int)(cam->pos_x - 0.1)] != 49)
-			cam->pos_y -= cam->dir_y * cam->speed;
-		if (data->map[(int)cam->pos_y]
-			[(int)(cam->pos_x - cam->dir_x * cam->speed)] != 49)
-			cam->pos_x -= cam->dir_x * cam->speed;
+		if (d->map[(int)(tmp_y)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y + 0.1)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y)][(int)(c->pos_x + 0.1)] != 49
+			&& d->map[(int)(tmp_y - 0.1)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y)][(int)(c->pos_x - 0.1)] != 49)
+			c->pos_y += c->plane_y * c->sp;
+		if (d->map[(int)c->pos_y][(int)(tmp_x)] != 49
+			&& d->map[(int)(c->pos_y + 0.1)][(int)(tmp_x)] != 49
+			&& d->map[(int)c->pos_y][(int)(tmp_x + 0.1)] != 49
+			&& d->map[(int)(c->pos_y - 0.1)][(int)(tmp_x)] != 49
+			&& d->map[(int)c->pos_y][(int)(tmp_x - 0.1)] != 49)
+			c->pos_x += c->plane_x * c->sp;
 	}
-	move_2(data, cam);
+	move_4(d, c);
+}
+
+void	move_2(t_data *d, t_cam *c)
+{
+	double	tmp_y;
+	double	tmp_x;
+
+	tmp_y = c->pos_y - (c->dir_y * c->sp);
+	tmp_x = c->pos_x - (c->dir_x * c->sp);
+	if (c->back)
+	{
+		if (d->map[(int)(tmp_y)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y + 0.1)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y)][(int)(c->pos_x + 0.1)] != 49
+			&& d->map[(int)(tmp_y - 0.1)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y)][(int)(c->pos_x - 0.1)] != 49)
+			c->pos_y -= c->dir_y * c->sp;
+		if (d->map[(int)c->pos_y][(int)(tmp_x)] != 49
+			&& d->map[(int)(c->pos_y + 0.1)][(int)(tmp_x)] != 49
+			&& d->map[(int)c->pos_y][(int)(tmp_x + 0.1)] != 49
+			&& d->map[(int)(c->pos_y - 0.1)][(int)(tmp_x)] != 49
+			&& d->map[(int)c->pos_y][(int)(tmp_x - 0.1)] != 49)
+			c->pos_x -= c->dir_x * c->sp;
+	}
+	move_3(d, c);
+}
+
+void	move(t_data *d, t_cam *c)
+{
+	double	tmp_y;
+	double	tmp_x;
+
+	tmp_y = c->pos_y + (c->dir_y * c->sp);
+	tmp_x = c->pos_x + (c->dir_x * c->sp);
+	if (c->front)
+	{
+		if (d->map[(int)(tmp_y)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y + 0.1)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y)][(int)(c->pos_x + 0.1)] != 49
+			&& d->map[(int)(tmp_y - 0.1)][(int)c->pos_x] != 49
+			&& d->map[(int)(tmp_y)][(int)(c->pos_x - 0.1)] != 49)
+			c->pos_y += c->dir_y * c->sp;
+		if (d->map[(int)c->pos_y][(int)(tmp_x)] != 49
+			&& d->map[(int)(c->pos_y + 0.1)][(int)(tmp_x)] != 49
+			&& d->map[(int)c->pos_y][(int)(tmp_x + 0.1)] != 49
+			&& d->map[(int)(c->pos_y - 0.1)][(int)(tmp_x)] != 49
+			&& d->map[(int)c->pos_y][(int)(tmp_x - 0.1)] != 49)
+			c->pos_x += c->dir_x * c->sp;
+	}
+	move_2(d, c);
 }
