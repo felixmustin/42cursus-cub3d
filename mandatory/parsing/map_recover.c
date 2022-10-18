@@ -32,30 +32,12 @@ int	malloc_map(t_data *data, int i, char **file)
 	return (1);
 }
 
-void print_map(char **str)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (str[i])
-	{
-		j = 0;
-		while (str[i][j] != '\0')
-		{
-			printf("%s\n", str[i]);
-			j++;
-		}
-		i++;
-	}
-}
-
 int	recup_map(t_data *data, char **file, int i)
 {
 	int	j;
 
 	j = 0;
-	while (file[i] && file[i][0] == '\n')
+	while (file[i] && (file[i][0] == '\n' || !empty_line(file[i])))
 		i++;
 	if (!malloc_map(data, i, file))
 		return (0);
@@ -68,7 +50,6 @@ int	recup_map(t_data *data, char **file, int i)
 		i++;
 	}
 	data->map[j] = NULL;
-	//print_map(file);
 	return (1);
 }
 

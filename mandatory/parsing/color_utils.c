@@ -17,13 +17,16 @@ void	check_color(char **split_color, int *i)
 	int	color_value;
 
 	color_value = 0;
-	while (*i < ft_strlen_split(split_color))
+	if (ft_strlen(split_color[2]) > 1)
 	{
-		color_value = ft_atoi(split_color[*i]);
-		if (color_value <= 255 && color_value >= 0)
-			*i += 1;
-		else
-			break ;
+		while (*i < ft_strlen_split(split_color))
+		{
+			color_value = ft_atoi(split_color[*i]);
+			if (color_value <= 255 && color_value >= 0)
+				*i += 1;
+			else
+				break ;
+		}
 	}
 }
 
