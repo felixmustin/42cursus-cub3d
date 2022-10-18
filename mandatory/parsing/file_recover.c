@@ -86,7 +86,10 @@ char	**read_file(int fd, int size)
 	{
 		file[i] = get_next_line(fd);
 		if (!file[i] && i < size)
+		{
+			printf("Error\nMalloc error or something are write after the map\n");
 			return (free_gnl(i, file));
+		}
 		i++;
 	}
 	file[i] = NULL;
